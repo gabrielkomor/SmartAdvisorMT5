@@ -1,7 +1,9 @@
 from typing import Tuple, Any
+
 from smtplib import SMTP_SSL
 from pyotp import TOTP
 from email.message import EmailMessage
+
 from scripts.login_data import gmail_email, OTP_gmail_password
 
 

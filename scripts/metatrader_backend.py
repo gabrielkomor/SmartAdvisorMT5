@@ -1,8 +1,10 @@
 import os
 from datetime import datetime, timedelta, timezone
-from typing import Any, Tuple, Dict
+
+from typing import Any, Tuple
 import MetaTrader5 as mt5
 import pandas as pd
+
 import scripts.calc_strategies_methods as calculate_strategies_methods
 import scripts.chart_methods as chart_methods
 import scripts.bsh_history as bsh_history
@@ -193,12 +195,6 @@ def run_calculations(
                 data=data, strategies=strategies
             )
         )
-
-        # calculateStrategiesMethods.display_strategies_results(
-        #     signals_buy=signals_buy,
-        #     signals_sell=signals_sell,
-        #     signals_hold=signals_hold
-        # )
 
         additive_sign, majority_sign, median_sign = (
             calculate_strategies_methods.interpret_strategies_result(

@@ -1,4 +1,5 @@
 from typing import Tuple
+
 import pandas as pd
 
 
@@ -33,19 +34,13 @@ def calculate_macd(
     short_period: int = 12,
     long_period: int = 26,
     signal_period: int = 9,
-) -> (Tuple)[float, float, float]:
+) -> tuple[float, float, float]:
     short_ema = data["Close"].ewm(span=short_period, adjust=False).mean()
     long_ema = data["Close"].ewm(span=long_period, adjust=False).mean()
     macd_line = short_ema - long_ema
     signal_line = macd_line.ewm(span=signal_period, adjust=False).mean()
     macd_hist = macd_line - signal_line
     return macd_line, signal_line, macd_hist.iloc[-5:].values
-
-
-# def calculate_mma(data: pd.DataFrame, short_period: int = 10, long_period: int = 30) -> Tuple[float, float]:
-#     short_ma = data['Close'].rolling(window=short_period).mean()
-#     long_ma = data['Close'].rolling(window=long_period).mean()
-#     return short_ma, long_ma
 
 
 def calculate_adx(data: pd.DataFrame, period: int = 14) -> Tuple[float, float, float]:

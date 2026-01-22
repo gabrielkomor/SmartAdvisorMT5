@@ -1,4 +1,5 @@
 import os
+
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import QUrl
 from PyQt6.QtWebEngineWidgets import QWebEngineView

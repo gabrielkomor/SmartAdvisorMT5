@@ -1,10 +1,8 @@
-import MetaTrader5 as mt5
-import numpy as np
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QColor, QPalette
-from PyQt6.QtCore import QUrl, QPropertyAnimation, QEasingCurve, QRect, QTimer
+from PyQt6.QtCore import QPropertyAnimation, QEasingCurve, QRect
 from PyQt6.QtWidgets import QApplication
-from PyQt6.QtGui import QStandardItem
+
 from interfaces.main_window_files.candle_chart_window import CandleChartBuilder
 from interfaces.main_window_files.signals_history_window import SignalsHistoryBuilder
 from interfaces.main_window_files.start_trade_window import StartTradeBuilder
@@ -148,7 +146,10 @@ class UiMainWindow(object):
         self.label_majority_decision = None
         self.label_median = None
         self.label_median_decision = None
-
+        self.app_backend = None
+        self.forex_data = None
+        self.stock_data = None
+        self.etf_data = None
 
     def setup_ui(self, main_window):
         main_window.setObjectName("MainWindow")

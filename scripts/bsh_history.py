@@ -1,8 +1,10 @@
 from typing import Tuple
+from datetime import datetime, timedelta
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
+
 import scripts.interpretation_methods as interpretation_methods
 import scripts.calc_strategies_methods as calculate_strategies_methods
 
@@ -12,7 +14,7 @@ def remove_days(df: pd.DataFrame, days: int) -> pd.DataFrame:
     return df[df["time"] < cutoff_date]
 
 
-def calculate_history_data(data: pd.DataFrame, shape: int) -> np.array:
+def calculate_history_data(data: pd.DataFrame, shape: int) -> np.ndarray:
     previous_day = None
     array = np.zeros((shape, 4, 3))
 
@@ -58,7 +60,7 @@ def calculate_history_data(data: pd.DataFrame, shape: int) -> np.array:
     return array[::-1], array.shape[0]
 
 
-def create_linear_chart(array: np.array, shape: int, show: bool) -> None:
+def create_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
     y = np.linspace(1, shape, shape)
 
     # setup dark mode
@@ -122,7 +124,7 @@ def create_linear_chart(array: np.array, shape: int, show: bool) -> None:
 
 
 def create_subplots_colors(
-    array: np.array, shape: int
+    array: np.ndarray, shape: int
 ) -> Tuple[np.array, np.array, np.array]:
     additive_data = array[:, 1]
     majority_vote = array[:, 2]
@@ -156,7 +158,7 @@ def create_subplots_colors(
     return additive_colors, majority_vote_colors, median_colors
 
 
-def create_all_linear_chart(array: np.array, shape: int, show: bool) -> None:
+def create_all_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
     x = np.linspace(1, shape, shape)
     plt.style.use("dark_background")
 
@@ -218,7 +220,7 @@ def create_all_linear_chart(array: np.array, shape: int, show: bool) -> None:
     plt.close(fig)
 
 
-def create_histogram_chart(array: np.array, show: bool) -> None:
+def create_histogram_chart(array: np.ndarray, show: bool) -> None:
     indices = np.arange(array.shape[0])
     plt.style.use("dark_background")
     fig, axs = plt.subplots(1, 3, figsize=(15, 5))

@@ -29,7 +29,6 @@ class MainWindowBackend:
         self.user_password = user_password
 
     def update_stock_icons_data(self):
-        # log_in(login, password, server)
         log_in(self.user_login, self.user_password, self.user_server)
         self.stock_symbols = get_account_symbols()
 

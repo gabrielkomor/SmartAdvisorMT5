@@ -1,4 +1,5 @@
 from typing import Tuple, Any
+
 import MetaTrader5 as mt5
 
 

@@ -1,6 +1,7 @@
+import time
+
 import pyotp
 import qrcode
-import time
 
 
 def create_qr_code(username: str) -> str:

@@ -1,4 +1,5 @@
 from typing import Dict
+
 import plotly.graph_objs as go
 import pandas as pd
 
@@ -271,7 +272,6 @@ def create_html_chart(
 
     # Added hiding of non-trading hours and days
     fig.update_layout(
-        # title=f'{name} Candlestick Chart',
         xaxis_title="Time",
         yaxis_title="Price",
         yaxis2=dict(

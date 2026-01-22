@@ -1,4 +1,5 @@
 from os import path, remove
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 

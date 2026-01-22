@@ -2,8 +2,8 @@ import numpy as np
 
 
 def additive_method(
-    signals_buy: np.array, signals_sell: np.array, signals_hold: np.array
-) -> np.array:
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+) -> np.ndarray:
     number = signals_buy.size
 
     vd_buy = np.sum(signals_buy) / number
@@ -20,8 +20,8 @@ def additive_method(
 
 
 def majority_vote_method(
-    signals_buy: np.array, signals_sell: np.array, signals_hold: np.array
-) -> np.array:
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+) -> np.ndarray:
     pos_buy = sum(1 for x in signals_buy if x > 0)
     pos_sell = sum(1 for x in signals_sell if x > 0)
     pos_hold = sum(1 for x in signals_hold if x > 0)
@@ -37,8 +37,8 @@ def majority_vote_method(
 
 
 def median_method(
-    signals_buy: np.array, signals_sell: np.array, signals_hold: np.array
-) -> np.array:
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+) -> np.ndarray:
     median_buy = np.median(signals_buy)
     median_sell = np.median(signals_sell)
     median_hold = np.median(signals_hold)
@@ -54,7 +54,7 @@ def median_method(
 
 
 def percentage_method_display(
-    signals_buy: np.array, signals_sell: np.array, signals_hold: np.array
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
 ) -> None:
     number = signals_buy.size
 
@@ -68,8 +68,8 @@ def percentage_method_display(
 
 
 def percentage_method_values(
-    signals_buy: np.array, signals_sell: np.array, signals_hold: np.array
-) -> np.array:
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+) -> np.ndarray:
     number = signals_buy.size
 
     vd_buy = round((np.sum(signals_buy) / number) * 100, 2)

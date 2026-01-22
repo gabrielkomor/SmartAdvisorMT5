@@ -5,9 +5,9 @@ import pandas as pd
 def calculate_signals_rsi(
     rsi: float,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     rsi_values = np.array([22, 30, 34, 46, 54, 66, 70, 78], dtype=np.int16)
     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
@@ -52,9 +52,9 @@ def calculate_signals_sma(
     sma_n: float,
     sma_m: float,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     sma1, sma2, sma3, sma4 = -2.5, -0.8, 0.8, 2.5
     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
@@ -93,9 +93,9 @@ def calculate_signals_bollinger_bands(
     bb_up_line: float,
     bb_down_line: float,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
     current_price = data["Close"].iloc[-1]
@@ -132,11 +132,11 @@ def calculate_signals_bollinger_bands(
 
 
 def calculate_signals_macd(
-    hist: np.array,
+    hist: np.ndarray,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
     current_price = hist[-1]
@@ -169,52 +169,14 @@ def calculate_signals_macd(
     )
 
 
-# def calculate_signals_mma(short_ma: pd.Series, long_ma: pd.Series, num: int, signals_buy: np.array,
-#                           signals_sell: np.array, signals_hold: np.array) -> None:
-#     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
-#     diff = short_ma - long_ma
-#     avg_diff = np.abs(np.mean(diff[-5:-2]))
-#     current_price = diff.iloc[-1]
-#
-#     x1 = -2 * avg_diff
-#     x2 = -avg_diff
-#     x3 = avg_diff
-#     x4 = 2 * avg_diff
-#
-#     if diff.iloc[-2] > 0 > diff.iloc[-1]:
-#         signals_sell[num], signals_buy[num], signals_hold[num] = 1, 0, 0
-#     elif diff.iloc[-2] < 0 < diff.iloc[-1]:
-#         signals_buy[num], signals_hold[num], signals_sell[num] = 1, 0, 0
-#     else:
-#         if current_price <= x1:
-#             signals_sell[num], signals_buy[num], signals_hold[num] = 1, 0, 0
-#         elif x1 < current_price < x2:
-#             signals_sell[num] = (x2 - current_price) / (x2 - x1)
-#
-#         if current_price >= x4:
-#             signals_buy[num], signals_hold[num], signals_sell[num] = 1, 0, 0
-#         elif x3 < current_price < x4:
-#             signals_buy[num] = (current_price - x3) / (x4 - x3)
-#
-#         if x2 <= current_price <= x3:
-#             signals_hold[num], signals_sell[num], signals_buy[num] = 1, 0, 0
-#         elif x1 < current_price < x2:
-#             signals_hold[num] = (current_price - x1) / (x2 - x1)
-#         elif x3 < current_price < x4:
-#             signals_hold[num] = (x4 - current_price) / (x4 - x3)
-#
-#     signals_buy[num], signals_sell[num], signals_hold[num] = np.round(
-#         [signals_buy[num], signals_sell[num], signals_hold[num]], 5)
-
-
 def calculate_signals_adx(
     adx: pd.Series,
     pdm: pd.Series,
     ndm: pd.Series,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     signals_buy[num] = signals_hold[num] = signals_sell[num] = 0
     x1, x2, x3, x4 = -40, -18, 18, 40
@@ -251,9 +213,9 @@ def calculate_signals_adx(
 def calculate_signals_volume(
     data: pd.DataFrame,
     num: int,
-    signals_buy: np.array,
-    signals_sell: np.array,
-    signals_hold: np.array,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     values = np.array(data["tick_volume"].iloc[-10:-2])
     current_value = data["tick_volume"].iloc[-2]
