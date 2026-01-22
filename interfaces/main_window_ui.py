@@ -22,6 +22,133 @@ from interfaces.log_in_mt5_ui import LogInMt5Ui
 
 
 class UiMainWindow(object):
+    def __init__(self):
+        self.central_widget = None
+        self.grid_layout = None
+        self.center_frame = None
+        self.horizontal_layout_5 = None
+        self.stacked_widget = None
+        self.user_login = None
+        self.user_password = None
+        self.user_server = None
+        self.download_data_builder = None
+        self.download_data_stacked_widget = None
+        self.radio_button_download_data_forex = None
+        self.radio_button_download_data_stock = None
+        self.radio_button_download_data_etf = None
+        self.label_download_data_symbol = None
+        self.combo_box_download_data_symbol = None
+        self.label_download_data_time_frame = None
+        self.combo_box_download_data_time_frame = None
+        self.label_download_data_time_delta = None
+        self.label_download_data_time_delta_min = None
+        self.horizontal_slider_download_data_td = None
+        self.label_download_data_time_delta_max = None
+        self.label_download_data_value_slider = None
+        self.push_button_download_data_dd = None
+        self.label_download_data_success = None
+        self.label_download_data_time_backwards = None
+        self.label_download_data_time_backwards_min = None
+        self.horizontal_slider_download_data_tb = None
+        self.label_download_data_time_backwards_max = None
+        self.label_download_data_backwards_value = None
+        self.candle_chart_builder = None
+        self.candle_chart_stacked_widget = None
+        self.horizontal_layout_11 = None
+        self.widget_candle_chart_place = None
+        self.signals_history_builder = None
+        self.signals_history_stacked_widget = None
+        self.horizontal_layout_12 = None
+        self.widget_signals_history_place = None
+        self.hist_decisions_builder = None
+        self.hist_decisions_stacked_widget = None
+        self.widget_hist_decision_place = None
+        self.linear_decisions_builder = None
+        self.linear_decisions_stacked_widget = None
+        self.widget_linear_decisions_place = None
+        self.start_trade_builder = None
+        self.start_trade_stacked_widget = None
+        self.radio_button_start_trade_buy = None
+        self.radio_button_start_trade_sell = None
+        self.radio_button_start_trade_close = None
+        self.label_start_trade_symbol = None
+        self.line_edit_start_trade_symbol = None
+        self.label_start_trade_volume = None
+        self.line_edit_start_trade_volume = None
+        self.label_start_trade_stop_loss = None
+        self.line_edit_start_trade_stop_loss = None
+        self.label_start_trade_take_profit = None
+        self.line_edit_start_trade_take_profit = None
+        self.label_start_trade_comment = None
+        self.line_edit_start_trade_comment = None
+        self.push_button_start_trade = None
+        self.label_start_trade_error = None
+        self.table_view_start_trade = None
+        self.table_model = None
+        self.user_window_builder = None
+        self.user_data_stacked_widget = None
+        self.label_user_data_name = None
+        self.label_user_data_name_value = None
+        self.label_user_data_balance = None
+        self.label_user_data_balance_value = None
+        self.label_user_data_profit = None
+        self.label_user_data_profit_value = None
+        self.label_user_data_equity = None
+        self.label_user_data_equity_value = None
+        self.line_edit_user_data_old_password = None
+        self.line_edit_user_data_new_password = None
+        self.line_edit_user_data_confirm_password = None
+        self.push_button_user_data_cp = None
+        self.label_user_data_error = None
+        self.top_frame_builder = None
+        self.top_frame = None
+        self.app_icon_label = None
+        self.app_name_label = None
+        self.user_name_label = None
+        self.push_button_user = None
+        self.small_left_frame_builder = None
+        self.small_left_frame = None
+        self.push_button_small_show_menu = None
+        self.push_button_small_download = None
+        self.push_button_small_candle_chart = None
+        self.push_button_small_signals_history = None
+        self.push_button_small_hist_decisions = None
+        self.push_button_small_linear_decisions = None
+        self.push_button_small_start_trade = None
+        self.push_button_small_exit_application = None
+        self.big_left_frame_builder = None
+        self.big_left_frame = None
+        self.push_button_big_show_menu = None
+        self.push_button_big_download_data = None
+        self.push_button_big_candle_chart = None
+        self.push_button_big_signals_history = None
+        self.push_button_big_hist_decisions = None
+        self.push_button_big_linear_decisions = None
+        self.push_button_big_start_trade = None
+        self.push_button_big_exit_application = None
+        self.right_frame_builder = None
+        self.right_frame = None
+        self.label_sma = None
+        self.label_sma_decision = None
+        self.label_rsi = None
+        self.label_rsi_decision = None
+        self.label_bb = None
+        self.label_bb_decision = None
+        self.label_macd = None
+        self.label_macd_decision = None
+        self.label_adx = None
+        self.label_adx_decision = None
+        self.label_volume = None
+        self.label_volume_decision = None
+        self.bottom_frame_builder = None
+        self.bottom_frame = None
+        self.label_additive = None
+        self.label_additive_decision = None
+        self.label_majority = None
+        self.label_majority_decision = None
+        self.label_median = None
+        self.label_median_decision = None
+
 
     def setup_ui(self, main_window):
         main_window.setObjectName("MainWindow")
@@ -338,8 +465,6 @@ class UiMainWindow(object):
         self.label_bb_decision = self.right_frame_builder.label_bb_decision
         self.label_macd = self.right_frame_builder.label_macd
         self.label_macd_decision = self.right_frame_builder.label_macd_decision
-        # self.label_mma = self.right_frame_builder.label_mma
-        # self.label_mma_decision = self.right_frame_builder.label_mma_decision
         self.label_adx = self.right_frame_builder.label_adx
         self.label_adx_decision = self.right_frame_builder.label_adx_decision
         self.label_volume = self.right_frame_builder.label_volume
@@ -572,10 +697,6 @@ class UiMainWindow(object):
 
         self.app_backend.insert_opened_positions()
 
-        # self.timer = QTimer()
-        # self.timer.timeout.connect(self.download_data_button)
-        # self.timer.start(10000)
-
         self.forex_data = {
             "1 Min": (1, 2),
             "5 Min": (1, 3),
@@ -742,7 +863,6 @@ class UiMainWindow(object):
         self.label_rsi.setText(_translate("MainWindow", "RSI"))
         self.label_bb.setText(_translate("MainWindow", "BB"))
         self.label_macd.setText(_translate("MainWindow", "MACD"))
-        # self.label_mma.setText(_translate("MainWindow", "MMA"))
         self.label_adx.setText(_translate("MainWindow", "ADX"))
         self.label_volume.setText(_translate("MainWindow", "Volume"))
         self.label_additive.setText(_translate("MainWindow", "Additive"))
