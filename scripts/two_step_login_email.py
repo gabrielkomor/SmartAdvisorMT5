@@ -1,15 +1,19 @@
+import os
+from pathlib import Path
 from typing import Tuple, Any
 
+from dotenv import load_dotenv
 from smtplib import SMTP_SSL
 from pyotp import TOTP
 from email.message import EmailMessage
 
-from scripts.login_data import gmail_email, OTP_gmail_password
-
 
 def send_otp_via_email(email: str, otp_code: str) -> None:
-    sender_email = gmail_email
-    sender_password = OTP_gmail_password
+    base_dir = Path(__file__).resolve().parent
+    env_path = base_dir.parent / ".env"
+    load_dotenv(env_path)
+    sender_email = os.getenv("GMAIL_EMAIL")
+    sender_password = os.getenv("OTP_GMAIL_PASSWORD")
     subject = "Smart Advisor MT5 e-mail verification code"
 
     msg = EmailMessage()
