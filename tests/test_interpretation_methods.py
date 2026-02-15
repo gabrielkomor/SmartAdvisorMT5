@@ -1,13 +1,12 @@
 import pytest
 import numpy as np
 
-from scripts.interpretation_methods import (
+from src.backend.interpretation_methods import (
     additive_method,
     majority_vote_method,
     median_method,
     percentage_method_values,
 )
-
 
 @pytest.mark.parametrize(
     "sig_buy, sig_sell, sig_hold, result",
