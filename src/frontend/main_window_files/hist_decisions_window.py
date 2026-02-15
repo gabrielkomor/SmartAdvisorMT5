@@ -21,7 +21,7 @@ class HistDecisionBuilder:
         )
         self.widget_hist_decision_place.setText("")
         self.widget_hist_decision_place.setPixmap(
-            QtGui.QPixmap("charts\\histogram_chart.png")
+            QtGui.QPixmap("src\\charts\\histogram_chart.png")
         )
         self.widget_hist_decision_place.setScaledContents(True)
         self.widget_hist_decision_place.setStyleSheet("background-color: black;")

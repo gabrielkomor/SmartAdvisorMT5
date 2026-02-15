@@ -10,7 +10,7 @@ def create_qr_code(username: str) -> str:
     uri = totp.provisioning_uri(f"{username}", issuer_name="Smart Advisor MT5")
 
     qr = qrcode.make(uri)
-    qr_file = "images\\google_authenticator_qr.png"
+    qr_file = "src\\assets\\google_authenticator_qr.png"
     qr.save(qr_file)
     time.sleep(1)
     return secret

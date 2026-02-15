@@ -3,7 +3,7 @@ from typing import Any
 
 
 def create_db(name: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(f"""
@@ -20,7 +20,7 @@ def create_db(name: str) -> None:
 
 
 def save_email_in_db(name: str, email: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -35,7 +35,7 @@ def save_email_in_db(name: str, email: str) -> None:
 
 
 def save_password_in_db(name: str, email: str, password: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -50,7 +50,7 @@ def save_password_in_db(name: str, email: str, password: str) -> None:
 
 
 def save_secret_in_db(name: str, email: str, secret: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -65,7 +65,7 @@ def save_secret_in_db(name: str, email: str, secret: str) -> None:
 
 
 def delete_user_from_db(name: str, email: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -80,7 +80,7 @@ def delete_user_from_db(name: str, email: str) -> None:
 
 
 def delete_table_from_db(name: str) -> None:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(f"DROP TABLE IF EXISTS {name}")
@@ -90,7 +90,7 @@ def delete_table_from_db(name: str) -> None:
 
 
 def get_secret_from_db(name: str, email: str) -> str:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -106,7 +106,7 @@ def get_secret_from_db(name: str, email: str) -> str:
 
 
 def get_password_from_db(name: str, email: str) -> Any:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(
@@ -126,7 +126,7 @@ def get_password_from_db(name: str, email: str) -> Any:
 
 
 def check_email_in_db(name: str, email: str) -> bool:
-    db = sqlite3.connect("database\\usersData.db")
+    db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
     cursor.execute(

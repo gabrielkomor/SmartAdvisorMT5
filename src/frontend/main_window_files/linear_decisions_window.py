@@ -23,7 +23,7 @@ class LinearDecisionsBuilder:
         )
         self.widget_linear_decisions_place.setText("")
         self.widget_linear_decisions_place.setPixmap(
-            QtGui.QPixmap("charts\\linear_chart.png")
+            QtGui.QPixmap("src\\charts\\linear_chart.png")
         )
         self.widget_linear_decisions_place.setScaledContents(True)
         self.widget_linear_decisions_place.setStyleSheet(

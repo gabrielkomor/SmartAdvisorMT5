@@ -204,16 +204,16 @@ class MainWindowBackend:
                 QtWidgets.QApplication.processEvents()
 
             self.gui.widget_candle_chart_place.setUrl(
-                QUrl.fromLocalFile(os.path.abspath("charts\\chart.html"))
+                QUrl.fromLocalFile(os.path.abspath("src\\charts\\chart.html"))
             )
             self.gui.widget_hist_decision_place.setPixmap(
-                QtGui.QPixmap("charts\\histogram_chart.png")
+                QtGui.QPixmap("src\\charts\\histogram_chart.png")
             )
             self.gui.widget_linear_decisions_place.setPixmap(
-                QtGui.QPixmap("charts\\linear_chart.png")
+                QtGui.QPixmap("src\\charts\\linear_chart.png")
             )
             self.gui.widget_signals_history_place.setPixmap(
-                QtGui.QPixmap("charts\\all_linear_chart.png")
+                QtGui.QPixmap("src\\charts\\all_linear_chart.png")
             )
 
             if not error:
@@ -434,8 +434,8 @@ class MainWindowBackend:
         )
 
         for chart in charts:
-            if os.path.exists(f"charts\\{chart}"):
-                os.remove(f"charts\\{chart}")
+            if os.path.exists(f"src\\charts\\{chart}"):
+                os.remove(f"src\\charts\\{chart}")
 
         self.gui.window = QtWidgets.QWidget()
         self.gui.ui = log_in_window.LogInUi()

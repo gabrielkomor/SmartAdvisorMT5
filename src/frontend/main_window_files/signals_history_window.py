@@ -19,7 +19,7 @@ class SignalsHistoryBuilder:
         )
         self.widget_signals_history_place.setText("")
         self.widget_signals_history_place.setPixmap(
-            QtGui.QPixmap("charts\\all_linear_chart.png")
+            QtGui.QPixmap("src\\charts\\all_linear_chart.png")
         )
         self.signals_history_stacked_widget.setStyleSheet("background-color: black;")
         self.widget_signals_history_place.setScaledContents(True)

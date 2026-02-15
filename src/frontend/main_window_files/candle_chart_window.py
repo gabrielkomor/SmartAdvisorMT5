@@ -27,7 +27,7 @@ class CandleChartBuilder:
         )
         self.widget_candle_chart_place.page().setBackgroundColor(QColor(0, 0, 0))
         self.widget_candle_chart_place.setUrl(
-            QUrl.fromLocalFile(os.path.abspath("charts\\chart.html"))
+            QUrl.fromLocalFile(os.path.abspath("src\\charts\\chart.html"))
         )
         self.widget_candle_chart_place.setObjectName("widgetCandleChartPlace")
         self.horizontal_layout_11.addWidget(self.widget_candle_chart_place)

@@ -205,7 +205,7 @@ def run_calculations(
         )
 
         # create chart
-        file_path = os.path.abspath("charts\\chart.html")
+        file_path = os.path.abspath("src\\charts\\chart.html")
         chart_methods.create_html_chart(
             ohlc_data=data,
             file_path=file_path,

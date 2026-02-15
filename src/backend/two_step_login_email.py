@@ -9,8 +9,7 @@ from email.message import EmailMessage
 
 
 def send_otp_via_email(email: str, otp_code: str) -> None:
-    base_dir = Path(__file__).resolve().parent
-    env_path = base_dir.parent / ".env"
+    env_path = Path(__file__).resolve().parents[2] / ".env"
     load_dotenv(env_path)
     sender_email = os.getenv("GMAIL_EMAIL")
     sender_password = os.getenv("OTP_GMAIL_PASSWORD")

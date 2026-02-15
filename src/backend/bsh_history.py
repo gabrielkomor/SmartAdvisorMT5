@@ -119,7 +119,7 @@ def create_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
     if show:
         plt.show()
 
-    fig.savefig("charts\\linear_chart.png", dpi=300, bbox_inches="tight")
+    fig.savefig("src\\charts\\linear_chart.png", dpi=300, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -216,7 +216,7 @@ def create_all_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
     if show:
         plt.show()
 
-    fig.savefig("charts\\all_linear_chart.png", dpi=300, bbox_inches="tight")
+    fig.savefig("src\\charts\\all_linear_chart.png", dpi=300, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -267,5 +267,5 @@ def create_histogram_chart(array: np.ndarray, show: bool) -> None:
     if show:
         plt.show()
 
-    fig.savefig("charts\\histogram_chart.png", dpi=300, bbox_inches="tight")
+    fig.savefig("src\\charts\\histogram_chart.png", dpi=300, bbox_inches="tight")
     plt.close(fig)
