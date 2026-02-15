@@ -250,7 +250,7 @@ class EmailVerificationUi(object):
         self.push_button_back.clicked.connect(form.close)
 
     def evu_back_btn(self):
-        import interfaces.sign_in_ui as sign_in_window
+        import src.frontend.sign_in_ui as sign_in_window
 
         self.window = QtWidgets.QWidget()
         self.ui = sign_in_window.SignInUi()
@@ -258,15 +258,15 @@ class EmailVerificationUi(object):
         self.window.show()
 
     def evu_verify_btn(self, active_window):
-        from interfaces.sign_in_ui import SignInUi
+        from src.frontend.sign_in_ui import SignInUi
 
         user_code = self.text_otp_code.toPlainText()
 
         if user_code == SignInUi.global_otp:
-            from scripts.encryption_file import encrypt_email, encrypt
-            from scripts.google_authenticator import create_qr_code
-            from scripts.data_base_connection import save_secret_in_db
-            from interfaces.sign_in_ui import SignInUi
+            from src.backend.encryption_file import encrypt_email, encrypt
+            from src.backend.google_authenticator import create_qr_code
+            from src.backend.data_base_connection import save_secret_in_db
+            from src.frontend.sign_in_ui import SignInUi
 
             email = SignInUi.global_email
             username = email.split("@")[0]
@@ -277,7 +277,7 @@ class EmailVerificationUi(object):
             hashed_email = encrypt_email(email)
             save_secret_in_db("users", hashed_email, encrypted_secret)
 
-            import interfaces.setup_two_step_login_ui as set_up_two_step_window
+            import src.frontend.setup_two_step_login_ui as set_up_two_step_window
 
             self.window = QtWidgets.QWidget()
             self.ui = set_up_two_step_window.SetUpTwoStepLoginUi()

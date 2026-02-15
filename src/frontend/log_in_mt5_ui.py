@@ -284,7 +284,7 @@ class LogInMt5Ui(object):
 
     def mt5_log_in_btn(self, active_window):
         try:
-            from scripts.metatrader_backend import log_in
+            from src.backend.metatrader_backend import log_in
 
             user_server = self.text_email.toPlainText()
             user_login = self.text_password.toPlainText()
@@ -297,7 +297,7 @@ class LogInMt5Ui(object):
                 user_login = 0
 
             if log_in(user_login, user_password, user_server):
-                import interfaces.main_window_ui as main_window
+                import src.frontend.main_window_ui as main_window
 
                 self.window = QtWidgets.QMainWindow()
                 self.ui = main_window.UiMainWindow()

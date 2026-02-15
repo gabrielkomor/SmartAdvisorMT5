@@ -176,10 +176,10 @@ class LogInTwoStepUi(object):
         )
 
     def log_in_two_step_verify_btn(self, active_window):
-        from scripts.google_authenticator import verify_qr_code
-        from scripts.data_base_connection import get_secret_from_db
-        from scripts.encryption_file import decrypt, encrypt_email
-        from interfaces.log_in_ui import LogInUi
+        from src.backend.google_authenticator import verify_qr_code
+        from scc.backend.data_base_connection import get_secret_from_db
+        from src.backend.encryption_file import decrypt, encrypt_email
+        from src.frontend.log_in_ui import LogInUi
 
         email = LogInUi.login_email
         hashed_email = encrypt_email(email)
@@ -189,7 +189,7 @@ class LogInTwoStepUi(object):
 
         if verify_qr_code(code, decrypted_secret):
             self.label_error.setText("Login correctly!")
-            import interfaces.log_in_mt5_ui as log_in_mt5_window
+            import src.frontend.log_in_mt5_ui as log_in_mt5_window
 
             self.window = QtWidgets.QWidget()
             self.ui = log_in_mt5_window.LogInMt5Ui()

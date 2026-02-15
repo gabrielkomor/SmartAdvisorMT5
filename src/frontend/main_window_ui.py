@@ -3,20 +3,20 @@ from PyQt6.QtGui import QColor, QPalette
 from PyQt6.QtCore import QPropertyAnimation, QEasingCurve, QRect
 from PyQt6.QtWidgets import QApplication
 
-from interfaces.main_window_files.candle_chart_window import CandleChartBuilder
-from interfaces.main_window_files.signals_history_window import SignalsHistoryBuilder
-from interfaces.main_window_files.start_trade_window import StartTradeBuilder
-from interfaces.main_window_files.download_data_window import DownloadDataBuilder
-from interfaces.main_window_files.user_window import UserWindowBuilder
-from interfaces.main_window_files.hist_decisions_window import HistDecisionBuilder
-from interfaces.main_window_files.linear_decisions_window import LinearDecisionsBuilder
-from interfaces.main_window_files.top_frame_window import TopFrameBuilder
-from interfaces.main_window_files.small_left_frame_window import SmallLeftFrameBuilder
-from interfaces.main_window_files.big_left_frame_window import BigLeftFrameBuilder
-from interfaces.main_window_files.right_frame_window import RightFrameBuilder
-from interfaces.main_window_files.bottom_frame_window import BottomFrameBuilder
-from interfaces.main_window_files.main_window_backend import MainWindowBackend
-from interfaces.log_in_mt5_ui import LogInMt5Ui
+from src.frontend.main_window_files.candle_chart_window import CandleChartBuilder
+from src.frontend.main_window_files.signals_history_window import SignalsHistoryBuilder
+from src.frontend.main_window_files.start_trade_window import StartTradeBuilder
+from src.frontend.main_window_files.download_data_window import DownloadDataBuilder
+from src.frontend.main_window_files.user_window import UserWindowBuilder
+from src.frontend.main_window_files.hist_decisions_window import HistDecisionBuilder
+from src.frontend.main_window_files.linear_decisions_window import LinearDecisionsBuilder
+from src.frontend.main_window_files.top_frame_window import TopFrameBuilder
+from src.frontend.main_window_files.small_left_frame_window import SmallLeftFrameBuilder
+from src.frontend.main_window_files.big_left_frame_window import BigLeftFrameBuilder
+from src.frontend.main_window_files.right_frame_window import RightFrameBuilder
+from src.frontend.main_window_files.bottom_frame_window import BottomFrameBuilder
+from src.frontend.main_window_files.main_window_backend import MainWindowBackend
+from src.frontend.log_in_mt5_ui import LogInMt5Ui
 
 
 class UiMainWindow(object):

@@ -3,9 +3,9 @@ from typing import Tuple, Dict
 import pandas as pd
 import numpy as np
 
-import scripts.strategy_methods as strategy_methods
-import scripts.strategy_functions as strategy_functions
-import scripts.interpretation_methods as interpretation_methods
+import src.backend.strategy_methods as strategy_methods
+import src.backend.strategy_functions as strategy_functions
+import src.backend.interpretation_methods as interpretation_methods
 
 
 def calculate_strategies(data: pd.DataFrame) -> Dict:

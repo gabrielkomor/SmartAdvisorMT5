@@ -1,21 +1,21 @@
 import os
 import numpy as np
 import MetaTrader5 as mt5
-import interfaces.log_in_ui as log_in_window
+
 from PyQt6 import QtGui, QtWidgets
 from PyQt6.QtCore import QUrl
 from PyQt6.QtGui import QStandardItem
-from interfaces.log_in_ui import LogInUi
-from scripts.metatrader_backend import log_in, get_account_symbols
-from scripts.encryption_file import verify_hashed_password
-from scripts.encryption_file import encrypt_email, encrypt_password
-from scripts.data_base_connection import get_password_from_db, save_password_in_db
-from scripts.metatrader_backend import get_account_info
-from scripts.metatrader_backend import run_calculations
-from scripts.transaction_methods import open_position, close_position
-from scripts.metatrader_backend import get_account_open_positions
 
-# from scripts.login_data import password, login, server
+import src.frontend.log_in_ui as log_in_window
+from src.frontend.log_in_ui import LogInUi
+from src.backend.metatrader_backend import log_in, get_account_symbols
+from src.backend.encryption_file import verify_hashed_password
+from src.backend.encryption_file import encrypt_email, encrypt_password
+from src.backend.data_base_connection import get_password_from_db, save_password_in_db
+from src.backend.metatrader_backend import get_account_info
+from src.backend.metatrader_backend import run_calculations
+from src.backend.transaction_methods import open_position, close_position
+from src.backend.metatrader_backend import get_account_open_positions
 
 
 class MainWindowBackend:
@@ -223,7 +223,7 @@ class MainWindowBackend:
                 hold_sign = decisions[1]["hold"]
 
                 for i, (buy, sell, hold) in enumerate(
-                    zip(buy_sig, sell_sign, hold_sign)
+                        zip(buy_sig, sell_sign, hold_sign)
                 ):
                     if hold > buy and hold > sell:
                         experts_icons[i] = "hold"
@@ -273,11 +273,11 @@ class MainWindowBackend:
         trade_symbol = trade_symbol.upper()
 
         if (
-            trade_symbol == ""
-            or trade_comment == ""
-            or trade_volume == ""
-            or trade_stop_loss == ""
-            or trade_take_profit == ""
+                trade_symbol == ""
+                or trade_comment == ""
+                or trade_volume == ""
+                or trade_stop_loss == ""
+                or trade_take_profit == ""
         ):
             self.gui.label_start_trade_error.setText("No enough data")
         else:
@@ -288,12 +288,12 @@ class MainWindowBackend:
 
                 if self.gui.radio_button_start_trade_buy.isChecked():
                     if open_position(
-                        "buy",
-                        trade_symbol,
-                        trade_volume,
-                        trade_comment,
-                        trade_stop_loss,
-                        trade_take_profit,
+                            "buy",
+                            trade_symbol,
+                            trade_volume,
+                            trade_comment,
+                            trade_stop_loss,
+                            trade_take_profit,
                     ):
                         price = mt5.symbol_info_tick(trade_symbol).bid
                         trade_stop_loss = price * trade_stop_loss
@@ -318,12 +318,12 @@ class MainWindowBackend:
                         )
                 elif self.gui.radio_button_start_trade_sell.isChecked():
                     if open_position(
-                        "sell",
-                        trade_symbol,
-                        trade_volume,
-                        trade_comment,
-                        trade_stop_loss,
-                        trade_take_profit,
+                            "sell",
+                            trade_symbol,
+                            trade_volume,
+                            trade_comment,
+                            trade_stop_loss,
+                            trade_take_profit,
                     ):
                         price = mt5.symbol_info_tick(trade_symbol).bid
                         temp = trade_stop_loss
@@ -386,9 +386,9 @@ class MainWindowBackend:
 
         for row in reversed(range(row_count)):
             if (
-                self.gui.table_model.item(row, 0).text() == str(symbol)
-                and self.gui.table_model.item(row, 3).text() == str(volume)
-                and self.gui.table_model.item(row, 6).text() == str(comment)
+                    self.gui.table_model.item(row, 0).text() == str(symbol)
+                    and self.gui.table_model.item(row, 3).text() == str(volume)
+                    and self.gui.table_model.item(row, 6).text() == str(comment)
             ):
                 self.gui.table_model.removeRow(row)
 

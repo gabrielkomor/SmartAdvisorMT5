@@ -278,7 +278,7 @@ class SetUpTwoStepLoginUi(object):
         self.re_translate_ui(form_app)
         QtCore.QMetaObject.connectSlotsByName(form_app)
 
-        from interfaces.email_verification_ui import EmailVerificationUi
+        from src.frontend.email_verification_ui import EmailVerificationUi
 
         self.code_len = len(EmailVerificationUi.user_secret) // 2
         self.email_label_4.setText(EmailVerificationUi.user_secret[0 : self.code_len])
@@ -289,10 +289,10 @@ class SetUpTwoStepLoginUi(object):
 
     def set_up_two_step_verify_btn(self, active_window):
         try:
-            from scripts.google_authenticator import verify_qr_code
-            from scripts.data_base_connection import get_secret_from_db
-            from scripts.encryption_file import decrypt, encrypt, encrypt_email
-            from interfaces.sign_in_ui import SignInUi
+            from src.backend.google_authenticator import verify_qr_code
+            from src.backend.data_base_connection import get_secret_from_db
+            from src.backend.encryption_file import decrypt, encrypt, encrypt_email
+            from src.frontend.sign_in_ui import SignInUi
 
             email = SignInUi.global_email
             hashed_email = encrypt_email(email)
@@ -304,7 +304,7 @@ class SetUpTwoStepLoginUi(object):
                 if path.exists("images\\google_authenticator_qr.png"):
                     remove("images\\google_authenticator_qr.png")
 
-                import interfaces.log_in_ui as log_in_window
+                import src.frontend.log_in_ui as log_in_window
 
                 self.window = QtWidgets.QWidget()
                 self.ui = log_in_window.LogInUi()

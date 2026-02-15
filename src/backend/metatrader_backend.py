@@ -5,9 +5,9 @@ from typing import Any, Tuple
 import MetaTrader5 as mt5
 import pandas as pd
 
-import scripts.calc_strategies_methods as calculate_strategies_methods
-import scripts.chart_methods as chart_methods
-import scripts.bsh_history as bsh_history
+import src.backend.calc_strategies_methods as calculate_strategies_methods
+import src.backend.chart_methods as chart_methods
+import src.backend.bsh_history as bsh_history
 
 
 # log in into MetaTrader5

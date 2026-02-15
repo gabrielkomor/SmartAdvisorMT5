@@ -305,14 +305,14 @@ class SignInUi(object):
 
     def sign_in_ui_log_in_btn(self, active_window):
         try:
-            from scripts.two_step_login_email import two_step_login
-            from scripts.data_base_connection import (
+            from src.backend.two_step_login_email import two_step_login
+            from src.backend.data_base_connection import (
                 create_db,
                 save_email_in_db,
                 save_password_in_db,
                 check_email_in_db,
             )
-            from scripts.encryption_file import encrypt_password, encrypt, encrypt_email
+            from src.backend.encryption_file import encrypt_password, encrypt, encrypt_email
 
             email = self.text_email.toPlainText()
             password = self.text_password.text()
@@ -336,7 +336,7 @@ class SignInUi(object):
                     save_email_in_db("users", hashed_email)
                     save_password_in_db("users", hashed_email, hashed_password)
 
-                    import interfaces.email_verification_ui as email_verify_window
+                    import src.frontend.email_verification_ui as email_verify_window
 
                     self.window = QtWidgets.QWidget()
                     self.ui = email_verify_window.EmailVerificationUi()
@@ -350,7 +350,7 @@ class SignInUi(object):
             print(f"Error: {error}")
 
     def sign_in_ui_sign_in_btn(self):
-        import interfaces.log_in_ui as log_in_window
+        import src.frontend.log_in_ui as log_in_window
 
         self.window = QtWidgets.QWidget()
         self.ui = log_in_window.LogInUi()

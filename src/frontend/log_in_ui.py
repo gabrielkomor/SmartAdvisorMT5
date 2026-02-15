@@ -284,8 +284,8 @@ class LogInUi(object):
 
     def log_in_ui_btn(self, active_window):
         try:
-            from scripts.data_base_connection import get_password_from_db
-            from scripts.encryption_file import encrypt_email
+            from src.backend.data_base_connection import get_password_from_db
+            from src.backend.encryption_file import encrypt_email
 
             user_email = self.text_email.toPlainText()
             user_password = self.text_password.text()
@@ -295,12 +295,12 @@ class LogInUi(object):
             if db_password is None:
                 self.label_error.setText("Incorrect email or password")
             else:
-                from scripts.encryption_file import verify_hashed_password
+                from src.backend.encryption_file import verify_hashed_password
 
                 if verify_hashed_password(user_password, db_password):
                     LogInUi.login_email = user_email
 
-                    import interfaces.log_in_two_step_ui as two_step_window
+                    import src.frontend.log_in_two_step_ui as two_step_window
 
                     self.window = QtWidgets.QWidget()
                     self.ui = two_step_window.LogInTwoStepUi()
@@ -314,7 +314,7 @@ class LogInUi(object):
             self.label_error.setText("Incorrect email or password")
 
     def log_in_ui_sign_in_btn(self):
-        import interfaces.sign_in_ui as sign_in_window
+        import src.frontend.sign_in_ui as sign_in_window
 
         self.window = QtWidgets.QWidget()
         self.ui = sign_in_window.SignInUi()
