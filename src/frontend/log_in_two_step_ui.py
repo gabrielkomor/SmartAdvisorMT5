@@ -40,7 +40,7 @@ class LogInTwoStepUi(object):
         self.label_image.setMinimumSize(QtCore.QSize(300, 150))
         self.label_image.setStyleSheet("border-radius: 10px;")
         self.label_image.setText("")
-        self.label_image.setPixmap(QtGui.QPixmap("images\\StartLogo.png"))
+        self.label_image.setPixmap(QtGui.QPixmap("assets\\StartLogo.png"))
         self.label_image.setScaledContents(True)
         self.label_image.setObjectName("labelImage")
         self.vertical_layout_2.addWidget(self.label_image)
@@ -201,7 +201,7 @@ class LogInTwoStepUi(object):
 
     def re_translate_ui(self, form):
         _translate = QtCore.QCoreApplication.translate
-        form.setWindowIcon(QtGui.QIcon("images\\Icon.png"))
+        form.setWindowIcon(QtGui.QIcon("assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
         self.password_label.setText(_translate("Form", "Two-step login"))
         self.text_password.setPlaceholderText(_translate("Form", "Enter your otp code"))

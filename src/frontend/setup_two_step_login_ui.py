@@ -50,7 +50,7 @@ class SetUpTwoStepLoginUi(object):
         self.label_image_qr.setStyleSheet("border-radius: 10px;")
         self.label_image_qr.setText("")
         self.label_image_qr.setPixmap(
-            QtGui.QPixmap("images\\google_authenticator_qr.png")
+            QtGui.QPixmap("assets\\google_authenticator_qr.png")
         )
         self.label_image_qr.setScaledContents(True)
         self.label_image_qr.setObjectName("labelImageQr")
@@ -301,8 +301,8 @@ class SetUpTwoStepLoginUi(object):
             code = self.text_otp_code.toPlainText()
 
             if verify_qr_code(code, decrypted_secret):
-                if path.exists("images\\google_authenticator_qr.png"):
-                    remove("images\\google_authenticator_qr.png")
+                if path.exists("assets\\google_authenticator_qr.png"):
+                    remove("assets\\google_authenticator_qr.png")
 
                 import src.frontend.log_in_ui as log_in_window
 
@@ -318,7 +318,7 @@ class SetUpTwoStepLoginUi(object):
 
     def re_translate_ui(self, form_app):
         _translate = QtCore.QCoreApplication.translate
-        form_app.setWindowIcon(QtGui.QIcon("images\\Icon.png"))
+        form_app.setWindowIcon(QtGui.QIcon("assets\\Icon.png"))
         form_app.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
         self.email_label_1.setText(_translate("Form", "Set up two-step login"))
         self.email_label_2.setText(_translate("Form", "Scan the qr code or"))

@@ -733,7 +733,7 @@ class UiMainWindow(object):
 
     def re_translate_ui(self, main_window):
         _translate = QtCore.QCoreApplication.translate
-        main_window.setWindowIcon(QtGui.QIcon("images\\Icon.png"))
+        main_window.setWindowIcon(QtGui.QIcon("assets\\Icon.png"))
         main_window.setWindowTitle(_translate("MainWindow", "Smart Advisor MT5"))
         self.radio_button_download_data_forex.setText(_translate("MainWindow", "Forex"))
         self.radio_button_download_data_stock.setText(_translate("MainWindow", "Stock"))

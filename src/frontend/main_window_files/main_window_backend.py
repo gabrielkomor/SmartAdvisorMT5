@@ -151,7 +151,7 @@ class MainWindowBackend:
         }
 
         for expert, icon in zip(experts_graphics.keys(), icons):
-            experts_graphics[expert](f"images\\{icon}Icon.png")
+            experts_graphics[expert](f"assets\\{icon}Icon.png")
 
     def change_aggregation_icons(self, icons):
         aggregation_graphics = {
@@ -167,7 +167,7 @@ class MainWindowBackend:
         }
 
         for aggregation, icon in zip(aggregation_graphics.keys(), icons):
-            aggregation_graphics[aggregation](f"images\\{icon}Icon.png")
+            aggregation_graphics[aggregation](f"assets\\{icon}Icon.png")
 
     def download_data_button(self):
         try:
