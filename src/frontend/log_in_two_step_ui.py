@@ -177,7 +177,7 @@ class LogInTwoStepUi(object):
 
     def log_in_two_step_verify_btn(self, active_window):
         from src.backend.google_authenticator import verify_qr_code
-        from scc.backend.data_base_connection import get_secret_from_db
+        from src.backend.data_base_connection import get_secret_from_db
         from src.backend.encryption_file import decrypt, encrypt_email
         from src.frontend.log_in_ui import LogInUi
 
