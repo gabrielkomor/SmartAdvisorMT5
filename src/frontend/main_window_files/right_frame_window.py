@@ -62,7 +62,7 @@ class RightFrameBuilder:
         self.label_sma_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_sma_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_sma_decision.setText("")
-        self.label_sma_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_sma_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_sma_decision.setScaledContents(True)
         self.label_sma_decision.setObjectName("labelSmaDecision")
         self.vertical_layout_3.addWidget(
@@ -84,7 +84,7 @@ class RightFrameBuilder:
         self.label_rsi_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_rsi_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_rsi_decision.setText("")
-        self.label_rsi_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_rsi_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_rsi_decision.setScaledContents(True)
         self.label_rsi_decision.setObjectName("labelRsiDecision")
         self.vertical_layout_3.addWidget(
@@ -106,7 +106,7 @@ class RightFrameBuilder:
         self.label_bb_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_bb_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_bb_decision.setText("")
-        self.label_bb_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_bb_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_bb_decision.setScaledContents(True)
         self.label_bb_decision.setObjectName("labelBbDecision")
         self.vertical_layout_3.addWidget(
@@ -128,7 +128,7 @@ class RightFrameBuilder:
         self.label_macd_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_macd_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_macd_decision.setText("")
-        self.label_macd_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_macd_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_macd_decision.setScaledContents(True)
         self.label_macd_decision.setObjectName("labelMacdDecision")
         self.vertical_layout_3.addWidget(
@@ -150,7 +150,7 @@ class RightFrameBuilder:
         self.label_adx_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_adx_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_adx_decision.setText("")
-        self.label_adx_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_adx_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_adx_decision.setScaledContents(True)
         self.label_adx_decision.setObjectName("labelAdxDecision")
         self.vertical_layout_3.addWidget(
@@ -172,7 +172,7 @@ class RightFrameBuilder:
         self.label_volume_decision.setMinimumSize(QtCore.QSize(45, 45))
         self.label_volume_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_volume_decision.setText("")
-        self.label_volume_decision.setPixmap(QtGui.QPixmap("assets\\holdIcon.png"))
+        self.label_volume_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
         self.label_volume_decision.setScaledContents(True)
         self.label_volume_decision.setObjectName("labelVolumeDecision")
         self.vertical_layout_3.addWidget(

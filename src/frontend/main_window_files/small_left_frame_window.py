@@ -62,7 +62,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_show_menu.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(
-            QtGui.QPixmap("assets\\menuIcon.png"),
+            QtGui.QPixmap("src\\assets\\menuIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -108,7 +108,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_download.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(
-            QtGui.QPixmap("assets\\downloadIcon.png"),
+            QtGui.QPixmap("src\\assets\\downloadIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -147,7 +147,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_candle_chart.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(
-            QtGui.QPixmap("assets\\candleStickIcon.png"),
+            QtGui.QPixmap("src\\assets\\candleStickIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -186,7 +186,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_signals_history.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(
-            QtGui.QPixmap("assets\\historyDecisionIcon.png"),
+            QtGui.QPixmap("src\\assets\\historyDecisionIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -227,7 +227,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_hist_decisions.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(
-            QtGui.QPixmap("assets\\histPlotIcon.png"),
+            QtGui.QPixmap("src\\assets\\histPlotIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -268,7 +268,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_linear_decisions.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(
-            QtGui.QPixmap("assets\\linearPlotIcon.png"),
+            QtGui.QPixmap("src\\assets\\linearPlotIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -309,7 +309,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_start_trade.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(
-            QtGui.QPixmap("assets\\shopIcon.png"),
+            QtGui.QPixmap("src\\assets\\shopIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
@@ -362,7 +362,7 @@ class SmallLeftFrameBuilder:
         self.push_button_small_exit_application.setText("")
         icon8 = QtGui.QIcon()
         icon8.addPixmap(
-            QtGui.QPixmap("assets\\exitIcon.png"),
+            QtGui.QPixmap("src\\assets\\exitIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )

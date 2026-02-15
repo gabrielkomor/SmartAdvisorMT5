@@ -32,7 +32,7 @@ class TopFrameBuilder:
         self.app_icon_label.setMinimumSize(QtCore.QSize(75, 75))
         self.app_icon_label.setMaximumSize(QtCore.QSize(75, 75))
         self.app_icon_label.setText("")
-        self.app_icon_label.setPixmap(QtGui.QPixmap("assets\\Icon.png"))
+        self.app_icon_label.setPixmap(QtGui.QPixmap("src\\assets\\Icon.png"))
         self.app_icon_label.setScaledContents(True)
         self.app_icon_label.setObjectName("appIconLabel")
         self.horizontal_layout.addWidget(self.app_icon_label)
@@ -97,7 +97,7 @@ class TopFrameBuilder:
         self.push_button_user.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(
-            QtGui.QPixmap("assets\\userIcon.png"),
+            QtGui.QPixmap("src\\assets\\userIcon.png"),
             QtGui.QIcon.Mode.Normal,
             QtGui.QIcon.State.Off,
         )
