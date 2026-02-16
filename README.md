@@ -199,7 +199,7 @@ the button attached in the graphic below:
 ![log-in-mt5](sample_screens/mt5_login_window.PNG)
 
 13. To download the data of the company we are interested in, it must first be added as a trading symbol in MetaTrader 5.
-14. Go to the Download Data tab, select the historical trading data you are interested in and download it.
+14. Go to the `Download Data` tab, select the historical trading data you are interested in and download it.
 15. After downloading the data, the application will automatically generate charts and trading signals visible in 
 the program's graphical interface.
 
@@ -209,3 +209,9 @@ the program's graphical interface.
 the graphical interface is responsive.
 
 # Project status
+
+- The Smart Advisor MT5 application is a fully functional and completed program supporting technical analysis of the stock market.
+- I used it as the basis for my engineering thesis, titled "An Advisory Application for Financial Market Analysis Using MetaTrader 5".
+- In the future, I plan to create another version of this application, 
+one with more advanced analytical features. I plan to use other programming languages to build the application. 
+Expanding the functionality of this application will form the basis of my future master's thesis.
