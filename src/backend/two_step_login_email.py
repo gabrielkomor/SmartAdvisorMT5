@@ -33,7 +33,7 @@ def generate_otp(secret: str) -> str:
 
 def two_step_login(user_email: str) -> Tuple[bool, Any]:
     try:
-        secret = "JBSWY3DPEHPK3PXP"
+        secret = os.getenv("SECRET")
         otp_code = generate_otp(secret)
         send_otp_via_email(user_email, otp_code)
         return True, otp_code
