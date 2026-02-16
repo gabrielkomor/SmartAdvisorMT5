@@ -223,7 +223,7 @@ class MainWindowBackend:
                 hold_sign = decisions[1]["hold"]
 
                 for i, (buy, sell, hold) in enumerate(
-                        zip(buy_sig, sell_sign, hold_sign)
+                    zip(buy_sig, sell_sign, hold_sign)
                 ):
                     if hold > buy and hold > sell:
                         experts_icons[i] = "hold"
@@ -273,11 +273,11 @@ class MainWindowBackend:
         trade_symbol = trade_symbol.upper()
 
         if (
-                trade_symbol == ""
-                or trade_comment == ""
-                or trade_volume == ""
-                or trade_stop_loss == ""
-                or trade_take_profit == ""
+            trade_symbol == ""
+            or trade_comment == ""
+            or trade_volume == ""
+            or trade_stop_loss == ""
+            or trade_take_profit == ""
         ):
             self.gui.label_start_trade_error.setText("No enough data")
         else:
@@ -288,12 +288,12 @@ class MainWindowBackend:
 
                 if self.gui.radio_button_start_trade_buy.isChecked():
                     if open_position(
-                            "buy",
-                            trade_symbol,
-                            trade_volume,
-                            trade_comment,
-                            trade_stop_loss,
-                            trade_take_profit,
+                        "buy",
+                        trade_symbol,
+                        trade_volume,
+                        trade_comment,
+                        trade_stop_loss,
+                        trade_take_profit,
                     ):
                         price = mt5.symbol_info_tick(trade_symbol).bid
                         trade_stop_loss = price * trade_stop_loss
@@ -318,12 +318,12 @@ class MainWindowBackend:
                         )
                 elif self.gui.radio_button_start_trade_sell.isChecked():
                     if open_position(
-                            "sell",
-                            trade_symbol,
-                            trade_volume,
-                            trade_comment,
-                            trade_stop_loss,
-                            trade_take_profit,
+                        "sell",
+                        trade_symbol,
+                        trade_volume,
+                        trade_comment,
+                        trade_stop_loss,
+                        trade_take_profit,
                     ):
                         price = mt5.symbol_info_tick(trade_symbol).bid
                         temp = trade_stop_loss
@@ -386,9 +386,9 @@ class MainWindowBackend:
 
         for row in reversed(range(row_count)):
             if (
-                    self.gui.table_model.item(row, 0).text() == str(symbol)
-                    and self.gui.table_model.item(row, 3).text() == str(volume)
-                    and self.gui.table_model.item(row, 6).text() == str(comment)
+                self.gui.table_model.item(row, 0).text() == str(symbol)
+                and self.gui.table_model.item(row, 3).text() == str(volume)
+                and self.gui.table_model.item(row, 6).text() == str(comment)
             ):
                 self.gui.table_model.removeRow(row)
 

@@ -51,7 +51,9 @@ class BottomFrameBuilder:
         self.label_additive_decision.setMinimumSize(QtCore.QSize(30, 30))
         self.label_additive_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_additive_decision.setText("")
-        self.label_additive_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
+        self.label_additive_decision.setPixmap(
+            QtGui.QPixmap("src\\assets\\holdIcon.png")
+        )
         self.label_additive_decision.setScaledContents(True)
         self.label_additive_decision.setObjectName("labelAdditiveDecision")
         self.horizontal_layout_2.addWidget(self.label_additive_decision)
@@ -76,7 +78,9 @@ class BottomFrameBuilder:
         self.label_majority_decision.setMinimumSize(QtCore.QSize(30, 30))
         self.label_majority_decision.setMaximumSize(QtCore.QSize(60, 60))
         self.label_majority_decision.setText("")
-        self.label_majority_decision.setPixmap(QtGui.QPixmap("src\\assets\\holdIcon.png"))
+        self.label_majority_decision.setPixmap(
+            QtGui.QPixmap("src\\assets\\holdIcon.png")
+        )
         self.label_majority_decision.setScaledContents(True)
         self.label_majority_decision.setObjectName("labelMajorityDecision")
         self.horizontal_layout_2.addWidget(self.label_majority_decision)

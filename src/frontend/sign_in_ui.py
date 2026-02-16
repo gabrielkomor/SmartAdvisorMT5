@@ -312,7 +312,11 @@ class SignInUi(object):
                 save_password_in_db,
                 check_email_in_db,
             )
-            from src.backend.encryption_file import encrypt_password, encrypt, encrypt_email
+            from src.backend.encryption_file import (
+                encrypt_password,
+                encrypt,
+                encrypt_email,
+            )
 
             email = self.text_email.toPlainText()
             password = self.text_password.text()

@@ -9,7 +9,9 @@ from src.frontend.main_window_files.start_trade_window import StartTradeBuilder
 from src.frontend.main_window_files.download_data_window import DownloadDataBuilder
 from src.frontend.main_window_files.user_window import UserWindowBuilder
 from src.frontend.main_window_files.hist_decisions_window import HistDecisionBuilder
-from src.frontend.main_window_files.linear_decisions_window import LinearDecisionsBuilder
+from src.frontend.main_window_files.linear_decisions_window import (
+    LinearDecisionsBuilder,
+)
 from src.frontend.main_window_files.top_frame_window import TopFrameBuilder
 from src.frontend.main_window_files.small_left_frame_window import SmallLeftFrameBuilder
 from src.frontend.main_window_files.big_left_frame_window import BigLeftFrameBuilder
