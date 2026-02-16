@@ -208,6 +208,8 @@ the program's graphical interface.
 - The application also allows you to draw on a candlestick chart and change its size depending on the user's needs, 
 the graphical interface is responsive.
 
+![draw-on-chart](sample_screens/draw_chart_window.PNG)
+
 # Project status
 
 - The Smart Advisor MT5 application is a fully functional and completed program supporting technical analysis of the stock market.
