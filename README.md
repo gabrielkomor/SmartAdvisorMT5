@@ -11,6 +11,7 @@ the MetaTrader 5 trading platform.
 - [Project setup](#project-setup)
 - [Application appearance](#application-appearance)
 - [Manual](#manual)
+- [Project status](#project-status)
 
 # Used technologies and applications
 
@@ -158,3 +159,53 @@ intended to enable the user to perform manual technical analysis
 according to their needs.
 
 # Manual
+
+- The following instructions describe how to run the application with a full 
+login system and how to create a user account in it.
+
+1. Launch the Metatrader 5 investment platform.
+2. Create an investment account there (a demo account is enough).
+3. Enable the possibility of making investment transactions on the platform by external programs by clicking 
+the button attached in the graphic below:
+
+![algo-trading](sample_screens/algo_trading_on.PNG)
+
+4. Run the applications according to the instructions described here: [Project setup](#project-setup).
+5. Create an account in the application by selecting the `Sing in` button in the window below 
+(if you have an account in the application, go to this step: 10)
+
+![welcome-window](sample_screens/welcome_window.PNG)
+
+6. Then enter your email address and create a password:
+
+![set-password](sample_screens/sign_in_window.PNG)
+
+7. Verify the provided e-mail address by entering the code that was sent to it by the application:
+
+![verify-email](sample_screens/verification_code_window.PNG)
+
+8. Launch the external Google Authenticator app to add your app account there.
+9. Add two-factor login method by scanning the QR code or entering the code:
+
+![two-factor](sample_screens/authenticator_window.PNG)
+
+10. Log in to the application using the account you created.
+11. Enter your two-factor login code from the Google Authenticator app:
+
+![two-factor-login](sample_screens/two_step_login_window.PNG)
+
+12. Log in to the MetaTrader 5 trading platform from the advisor application:
+
+![log-in-mt5](sample_screens/mt5_login_window.PNG)
+
+13. To download the data of the company we are interested in, it must first be added as a trading symbol in MetaTrader 5.
+14. Go to the Download Data tab, select the historical trading data you are interested in and download it.
+15. After downloading the data, the application will automatically generate charts and trading signals visible in 
+the program's graphical interface.
+
+### Tips
+
+- The application also allows you to draw on a candlestick chart and change its size depending on the user's needs, 
+the graphical interface is responsive.
+
+# Project status
