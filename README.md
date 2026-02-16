@@ -34,7 +34,7 @@ the MetaTrader 5 trading platform.
     - GIMP - program used to create application graphics.
     - DB Browser - program used when working with the database.
     - Google Authenticator - program used to store two-factor login keys.
-    - MetaTrade 5 - investment platform used to download data and open trading positions.
+    - MetaTrader 5 - investment platform used to download data and open trading positions.
 
 # Project setup
 
@@ -75,6 +75,7 @@ or
 - If you want to run only the main application window without logging in first, 
 uncomment the following line in the main.py file: `run_app()`.
 
+
 - If you want to run the entire application, including its login system, 
 uncomment the following program line in the main.py file: `run_main()`. Additionally, 
 this operation requires the correct creation of an environment file, instructions on how to do it correctly are below:
@@ -86,4 +87,74 @@ this operation requires the correct creation of an environment file, instruction
 3. Replace the sample values with real data.
 
 # Application appearance
+
+### Contents of the tabs of the main application window
+
+- Main application window containing the window for downloading historical stock market data:
+![main-download](sample_screens/download_data_window.PNG)
+
+
+- Main application window showing an interactive candlestick chart created based on previously downloaded data:
+![main-candle-chart](sample_screens/chart_window.PNG)
+
+
+- Main application window showing signals transmitted by applications in the past:
+![main-history-signals](sample_screens/history_signals_window.PNG)
+
+
+- Main application window showing the percentage values of the signal strength transmitted by all expert systems:
+![main-hist](sample_screens/hist_chart_window.PNG)
+
+
+- The same data shown in a line graph:
+![main-linear](sample_screens/linear_chart_window.PNG)
+
+
+- Main application window responsible for making transactions in the MetaTrader 5 platform from the application 
+level and displaying currently open trading accounts:
+![main-trade](sample_screens/transaction_window.PNG)
+
+
+- Main application window showing the details of the created account:
+![main-account](sample_screens/user_details_window.PNG)
+
+
+### Implemented technical indicators 
+##### (they can be displayed on the application graph for currently downloaded data)
+
+
+- SMA (Simple Moving Average) indicator:
+![sma](sample_screens/sma_indicator_window.PNG)
+
+
+- RSI (Relative Strength Index) indicator:
+![rsi](sample_screens/rsi_indicator_window.PNG)
+
+
+- BB (Bollinger Bands) indicator:
+![bb](sample_screens/bollinger_bands_window.png)
+
+
+- MACD (Moving Average Convergence/Divergence) indicator:
+![macd](sample_screens/macd_indicator_window.PNG)
+
+
+- ADX (Average Directional Index) indicator:
+![adx](sample_screens/adx_indicator_window.PNG)
+
+
+- Volume:
+![volume](sample_screens/volume_indicator_window.PNG)
+
+
+- Fibonacci Levels:
+![fibo](sample_screens/fibo_indicator_window.PNG)
+
+
+- The technical indicators presented above have been implemented in the 
+application's automated expert system and provide the user with the 
+current trading signal via a graphical interface. Their display is 
+intended to enable the user to perform manual technical analysis 
+according to their needs.
+
 # Manual
