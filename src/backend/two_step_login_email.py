@@ -7,10 +7,11 @@ from smtplib import SMTP_SSL
 from pyotp import TOTP
 from email.message import EmailMessage
 
+env_path = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(env_path)
+
 
 def send_otp_via_email(email: str, otp_code: str) -> None:
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    load_dotenv(env_path)
     sender_email = os.getenv("GMAIL_EMAIL")
     sender_password = os.getenv("OTP_GMAIL_PASSWORD")
     subject = "Smart Advisor MT5 e-mail verification code"
