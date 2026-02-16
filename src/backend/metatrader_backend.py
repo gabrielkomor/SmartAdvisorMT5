@@ -1,3 +1,8 @@
+"""
+This file stores functions that are responsible for communication between the application and MetaTrader 5.
+In addition, other functions of the application's calculation logic are also called here.
+"""
+
 import os
 from datetime import datetime, timedelta, timezone
 
@@ -12,11 +17,22 @@ import src.backend.bsh_history as bsh_history
 
 # log in into MetaTrader5
 def log_in(login: int, password: str, server: str) -> bool:
+    """
+    This function is responsible for logging into MetaTrader 5 account.
+    :param login: login.
+    :param password: password.
+    :param server: server.
+    :return: boolean.
+    """
     mt5.initialize()
     return mt5.login(login, password, server)
 
 
 def get_account_info() -> Any:
+    """
+    This function fetches data about account from MetaTrader 5.
+    :return: data.
+    """
     account_info = mt5.account_info()
     if account_info is None:
         return None
@@ -24,6 +40,10 @@ def get_account_info() -> Any:
 
 
 def get_account_symbols() -> Any:
+    """
+    This function is responsible for fetching symbols data from MetaTrader 5.
+    :return: data.
+    """
     symbols = mt5.symbols_get()
     if not symbols:
         return None
@@ -53,6 +73,10 @@ def get_account_symbols() -> Any:
 
 
 def get_account_open_positions() -> pd.DataFrame:
+    """
+    This function is responsible for fetching opened positions from MetaTrader 5.
+    :return: data.
+    """
     positions = mt5.positions_get()
 
     if positions is None or len(positions) == 0:
@@ -63,9 +87,8 @@ def get_account_open_positions() -> pd.DataFrame:
     return positions_df
 
 
-# download data from MetaTrader5
 def download_data(
-    symbol: str, days: int, time_frame: int, time_backward: int
+        symbol: str, days: int, time_frame: int, time_backward: int
 ) -> pd.DataFrame:
     """
     This function is used to download historical stock market data from the MetaTrader 5 application.
@@ -76,12 +99,12 @@ def download_data(
     :return: open high low close stock market data
     """
     start: datetime = (
-        datetime.now(timezone.utc)
-        - timedelta(days=days)
-        - timedelta(days=time_backward)
+            datetime.now(timezone.utc)
+            - timedelta(days=days)
+            - timedelta(days=time_backward)
     )
     end: datetime = (
-        datetime.now(timezone.utc) + timedelta(hours=2) - timedelta(days=time_backward)
+            datetime.now(timezone.utc) + timedelta(hours=2) - timedelta(days=time_backward)
     )
     ohlc_data: pd.DataFrame = pd.DataFrame(
         mt5.copy_rates_range(symbol, time_frame, start, end)
@@ -96,8 +119,12 @@ def download_data(
     return ohlc_data
 
 
-# prepare data for calculations and display
 def prepare_data(ohlc_data: pd.DataFrame) -> pd.DataFrame:
+    """
+    This function is responsible for prepare data for calculations and display them.
+    :param ohlc_data: raw data.
+    :return: prepared data.
+    """
     ohlc_data.rename(
         columns={
             "open": "Open",
@@ -114,13 +141,21 @@ def prepare_data(ohlc_data: pd.DataFrame) -> pd.DataFrame:
     return ohlc_data
 
 
-# log off from MetaTrader5
 def log_out() -> None:
+    """
+    This function is responsible for log out from MetaTrader 5.
+    :return: nothing.
+    """
     mt5.shutdown()
 
 
-# calculate history data
 def create_history_charts(days: int, data: pd.DataFrame) -> None:
+    """
+    This function is responsible for calculating history data.
+    :param days: number of days.
+    :param data: data.
+    :return: nothing.
+    """
     if days > 86:
         history_data_size = 80
     elif days > 7:
@@ -142,8 +177,17 @@ def create_history_charts(days: int, data: pd.DataFrame) -> None:
 
 # main program loop
 def run_calculations(
-    symbol: str, days: int, time_frm: str, forex: bool, time_backward: int
+        symbol: str, days: int, time_frm: str, forex: bool, time_backward: int
 ) -> Tuple[bool, Any]:
+    """
+    This function is responsible for call all important backend functions which makes calculations on data.
+    :param symbol: transaction symbol.
+    :param days: number of days.
+    :param time_frm: chosen time frame.
+    :param forex: forex data.
+    :param time_backward: number of backward days.
+    :return: calculated data.
+    """
     time_types = {
         "1 Min": mt5.TIMEFRAME_M1,
         "5 Min": mt5.TIMEFRAME_M5,

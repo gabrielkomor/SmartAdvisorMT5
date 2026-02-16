@@ -1,3 +1,7 @@
+"""
+This file contains functions that are responsible for creating static graphs displayed in the application window.
+"""
+
 from typing import Tuple
 from datetime import datetime, timedelta
 
@@ -10,11 +14,23 @@ import src.backend.calc_strategies_methods as calculate_strategies_methods
 
 
 def remove_days(df: pd.DataFrame, days: int) -> pd.DataFrame:
+    """
+    This function is responsible for filter data.
+    :param df: data.
+    :param days: number days.
+    :return: updated data.
+    """
     cutoff_date = datetime.now() - timedelta(days=days)
     return df[df["time"] < cutoff_date]
 
 
 def calculate_history_data(data: pd.DataFrame, shape: int) -> np.ndarray:
+    """
+    Function is responsible for calculating historical trading signals.
+    :param data: data.
+    :param shape: amount of data.
+    :return: calculated signals.
+    """
     previous_day = None
     array = np.zeros((shape, 4, 3))
 
@@ -61,6 +77,13 @@ def calculate_history_data(data: pd.DataFrame, shape: int) -> np.ndarray:
 
 
 def create_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
+    """
+    Function is responsible for creating linear chart which is displayed in app interface.
+    :param array: data.
+    :param shape: data shape.
+    :param show: display chart or not.
+    :return: nothing, only creates chart.
+    """
     y = np.linspace(1, shape, shape)
 
     # setup dark mode
@@ -126,6 +149,12 @@ def create_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
 def create_subplots_colors(
     array: np.ndarray, shape: int
 ) -> Tuple[np.array, np.array, np.array]:
+    """
+    Helper function used to calculate data for subgraphs.
+    :param array: data.
+    :param shape: data shape.
+    :return: data required to create subgraphs.
+    """
     additive_data = array[:, 1]
     majority_vote = array[:, 2]
     median_data = array[:, 3]
@@ -159,6 +188,13 @@ def create_subplots_colors(
 
 
 def create_all_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
+    """
+    Function is used to create a chart that shows historical signals transmitted by the application in the past.
+    :param array: data.
+    :param shape: data shape.
+    :param show: display chart or not.
+    :return: nothing, only create chart.
+    """
     x = np.linspace(1, shape, shape)
     plt.style.use("dark_background")
 
@@ -221,6 +257,12 @@ def create_all_linear_chart(array: np.ndarray, shape: int, show: bool) -> None:
 
 
 def create_histogram_chart(array: np.ndarray, show: bool) -> None:
+    """
+    Function is responsible for creating histogram chart which is displayed in app interface.
+    :param array: data.
+    :param show: data shape.
+    :return: nothing, only creates chart.
+    """
     indices = np.arange(array.shape[0])
     plt.style.use("dark_background")
     fig, axs = plt.subplots(1, 3, figsize=(15, 5))

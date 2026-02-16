@@ -1,3 +1,8 @@
+"""
+This file is responsible for creating an interactive candlestick chart that is used in the main application window
+when analyzing historical data.
+"""
+
 from typing import Dict
 
 import plotly.graph_objs as go
@@ -7,6 +12,13 @@ import pandas as pd
 def add_sma_10_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -23,6 +35,13 @@ def add_sma_10_indicator_to_chart(
 def add_sma_20_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -39,6 +58,13 @@ def add_sma_20_indicator_to_chart(
 def add_sma_30_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -55,6 +81,13 @@ def add_sma_30_indicator_to_chart(
 def add_bb_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -81,6 +114,13 @@ def add_bb_indicator_to_chart(
 def add_rsi_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -96,6 +136,13 @@ def add_rsi_indicator_to_chart(
 def add_macd_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -136,6 +183,13 @@ def add_macd_indicator_to_chart(
 def add_adx_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Scatter(
             x=ohlc_data["time"],
@@ -171,6 +225,12 @@ def add_adx_indicator_to_chart(
 
 
 def add_volume_indicator_to_chart(fig: go.Figure, ohlc_data: pd.DataFrame) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     fig.add_trace(
         go.Bar(
             y=ohlc_data["tick_volume"],
@@ -187,6 +247,13 @@ def add_volume_indicator_to_chart(fig: go.Figure, ohlc_data: pd.DataFrame) -> No
 def add_fibonacci_levels_indicator_to_chart(
     fig: go.Figure, ohlc_data: pd.DataFrame, strategies: Dict
 ) -> None:
+    """
+    This function is responsible for add indicator into interactive chart.
+    :param fig: current chart.
+    :param ohlc_data: data.
+    :param strategies: data.
+    :return: nothing, only creates new indicator on chart.
+    """
     time_range = ohlc_data["time"]
     legend_group_name = "Fib Lvls"
 
@@ -227,6 +294,15 @@ def create_html_chart(
     strategies: Dict,
     time_breaks: int,
 ) -> None:
+    """
+    This function is responsible for creating interactive chart in html format.
+    :param ohlc_data: data
+    :param file_path: path
+    :param name: chart name.
+    :param strategies: data.
+    :param time_breaks: data.
+    :return: nothing, only creates chart.
+    """
     # Creating a candlestick chart
     fig = go.Figure(
         data=[

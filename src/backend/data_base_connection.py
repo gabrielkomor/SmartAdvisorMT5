@@ -1,8 +1,17 @@
+"""
+This file is responsible for communication between the application and the database.
+"""
+
 import sqlite3
 from typing import Any
 
 
 def create_db(name: str) -> None:
+    """
+    This function is responsible for creating new database and table.
+    :param name: table name.
+    :return: nothing.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -20,6 +29,12 @@ def create_db(name: str) -> None:
 
 
 def save_email_in_db(name: str, email: str) -> None:
+    """
+    This function is responsible for saving email in database.
+    :param name: table name.
+    :param email: user email.
+    :return: nothing.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -35,6 +50,13 @@ def save_email_in_db(name: str, email: str) -> None:
 
 
 def save_password_in_db(name: str, email: str, password: str) -> None:
+    """
+    This function is responsible for save password in database.
+    :param name: table name.
+    :param email: user email.
+    :param password: user password.
+    :return: nothing.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -50,6 +72,13 @@ def save_password_in_db(name: str, email: str, password: str) -> None:
 
 
 def save_secret_in_db(name: str, email: str, secret: str) -> None:
+    """
+    This function is responsible for saving secret in database.
+    :param name: table name.
+    :param email: user email.
+    :param secret: secret.
+    :return: nothing.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -64,32 +93,13 @@ def save_secret_in_db(name: str, email: str, secret: str) -> None:
     db.close()
 
 
-def delete_user_from_db(name: str, email: str) -> None:
-    db = sqlite3.connect("src\\database\\usersData.db")
-    cursor = db.cursor()
-
-    cursor.execute(
-        f"""
-        DELETE FROM {name} WHERE email = ?
-    """,
-        (email,),
-    )
-
-    db.commit()
-    db.close()
-
-
-def delete_table_from_db(name: str) -> None:
-    db = sqlite3.connect("src\\database\\usersData.db")
-    cursor = db.cursor()
-
-    cursor.execute(f"DROP TABLE IF EXISTS {name}")
-
-    db.commit()
-    db.close()
-
-
 def get_secret_from_db(name: str, email: str) -> str:
+    """
+    This function is responsible for fetching secret from database.
+    :param name: table name.
+    :param email: user email.
+    :return: secret.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -106,6 +116,12 @@ def get_secret_from_db(name: str, email: str) -> str:
 
 
 def get_password_from_db(name: str, email: str) -> Any:
+    """
+    This function is responsible for fetching password from database.
+    :param name: table name.
+    :param email: user email.
+    :return: user password.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
@@ -126,6 +142,12 @@ def get_password_from_db(name: str, email: str) -> Any:
 
 
 def check_email_in_db(name: str, email: str) -> bool:
+    """
+    This function checks if email exist in database.
+    :param name: table name.
+    :param email: user email.
+    :return: boolean.
+    """
     db = sqlite3.connect("src\\database\\usersData.db")
     cursor = db.cursor()
 
