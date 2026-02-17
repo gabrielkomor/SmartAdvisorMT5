@@ -6,7 +6,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class RightFrameBuilder:
-    def __init__(self, central_widget):
+    """
+    This class is responsible for creating right frame in main window.
+    """
+
+    def __init__(self, central_widget) -> None:
         self.central_widget = central_widget
         self.right_frame = None
         self.label_sma = None
@@ -27,7 +31,11 @@ class RightFrameBuilder:
         self.vertical_layout_6 = None
         self.vertical_layout_3 = None
 
-    def right_frame_builder_setup(self):
+    def right_frame_builder_setup(self) -> None:
+        """
+        This method is responsible for create right frame content.
+        :return: nothing.
+        """
         self.right_frame = QtWidgets.QFrame(parent=self.central_widget)
         self.right_frame.setMinimumSize(QtCore.QSize(80, 0))
         self.right_frame.setMaximumSize(QtCore.QSize(80, 16777215))

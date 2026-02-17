@@ -7,7 +7,11 @@ from PyQt6.QtGui import QStandardItemModel
 
 
 class StartTradeBuilder:
-    def __init__(self):
+    """
+    This class is responsible for creating tab for trading in application main window.
+    """
+
+    def __init__(self) -> None:
         self.start_trade_stacked_widget = None
         self.radio_button_start_trade_buy = None
         self.radio_button_start_trade_sell = None
@@ -39,7 +43,11 @@ class StartTradeBuilder:
         self.horizontal_layout_18 = None
         self.horizontal_layout_19 = None
 
-    def start_trade_setup(self):
+    def start_trade_setup(self) -> None:
+        """
+        This method is responsible for create tab content.
+        :return: nothing.
+        """
         self.start_trade_stacked_widget = QtWidgets.QWidget()
         self.start_trade_stacked_widget.setObjectName("startTradeStackedWidget")
         self.horizontal_layout_22 = QtWidgets.QHBoxLayout(

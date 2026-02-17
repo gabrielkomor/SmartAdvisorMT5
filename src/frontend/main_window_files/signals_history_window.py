@@ -6,12 +6,20 @@ from PyQt6 import QtWidgets, QtGui
 
 
 class SignalsHistoryBuilder:
-    def __init__(self):
+    """
+    This class is responsible for create tab for history signals chart.
+    """
+
+    def __init__(self) -> None:
         self.signals_history_stacked_widget = None
         self.horizontal_layout_12 = None
         self.widget_signals_history_place = None
 
-    def signals_history_setup(self):
+    def signals_history_setup(self) -> None:
+        """
+        This method is responsible for create tab content.
+        :return: nothing.
+        """
         self.signals_history_stacked_widget = QtWidgets.QWidget()
         self.signals_history_stacked_widget.setObjectName("signalsHistoryStackedWidget")
         self.horizontal_layout_12 = QtWidgets.QHBoxLayout(

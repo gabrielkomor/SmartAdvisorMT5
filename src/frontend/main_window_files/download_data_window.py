@@ -6,7 +6,11 @@ from PyQt6 import QtWidgets, QtGui, QtCore
 
 
 class DownloadDataBuilder:
-    def __init__(self):
+    """
+    This class is responsible for creating download data tab.
+    """
+
+    def __init__(self) -> None:
         self.download_data_stacked_widget = None
         self.radio_button_download_data_forex = None
         self.radio_button_download_data_stock = None
@@ -39,7 +43,11 @@ class DownloadDataBuilder:
         self.horizontal_layout_8 = None
         self.horizontal_layout_slider2 = None
 
-    def download_data_setup(self):
+    def download_data_setup(self) -> None:
+        """
+        This method is responsible for creating download data tab content.
+        :return: nothing.
+        """
         self.download_data_stacked_widget = QtWidgets.QWidget()
         self.download_data_stacked_widget.setObjectName("downloadDataStackedWidget")
         self.horizontal_layout_10 = QtWidgets.QHBoxLayout(

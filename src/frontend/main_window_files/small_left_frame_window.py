@@ -6,7 +6,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class SmallLeftFrameBuilder:
-    def __init__(self, central_widget):
+    """
+    This class is responsible for create smaller version of left navigation application menu.
+    """
+
+    def __init__(self, central_widget) -> None:
         self.centralWidget = central_widget
         self.small_left_frame = None
         self.push_button_small_show_menu = None
@@ -21,7 +25,11 @@ class SmallLeftFrameBuilder:
         self.vertical_layout_4 = None
         self.vertical_layout = None
 
-    def small_left_frame_setup(self):
+    def small_left_frame_setup(self) -> None:
+        """
+        This method is responsible for create left frame content.
+        :return: nothing.
+        """
         self.small_left_frame = QtWidgets.QFrame(parent=self.centralWidget)
         self.small_left_frame.setMinimumSize(QtCore.QSize(60, 475))
         self.small_left_frame.setMaximumSize(QtCore.QSize(60, 16777215))

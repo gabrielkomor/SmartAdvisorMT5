@@ -6,7 +6,11 @@ from PyQt6 import QtCore, QtWidgets, QtGui
 
 
 class TopFrameBuilder:
-    def __init__(self, central_widget):
+    """
+    This class is responsible for create top application bar.
+    """
+
+    def __init__(self, central_widget) -> None:
         self.centralWidget = central_widget
         self.top_frame = None
         self.app_icon_label = None
@@ -17,7 +21,11 @@ class TopFrameBuilder:
         self.horizontal_layout_4 = None
         self.horizontal_layout = None
 
-    def top_frame_setup(self):
+    def top_frame_setup(self) -> None:
+        """
+        This method is responsible for create top bar content.
+        :return: nothing.
+        """
         self.top_frame = QtWidgets.QFrame(parent=self.centralWidget)
         self.top_frame.setMinimumSize(QtCore.QSize(960, 85))
         self.top_frame.setMaximumSize(QtCore.QSize(16777215, 100))

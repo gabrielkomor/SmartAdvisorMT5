@@ -11,12 +11,20 @@ from PyQt6.QtGui import QColor
 
 
 class CandleChartBuilder:
-    def __init__(self):
+    """
+    This class is responsible for create candle chart widget for main window.
+    """
+
+    def __init__(self) -> None:
         self.candle_chart_stacked_widget = None
         self.horizontal_layout_11 = None
         self.widget_candle_chart_place = None
 
-    def candle_chart_setup(self):
+    def candle_chart_setup(self) -> None:
+        """
+        This method is responsible for creating candle chart window content.
+        :return: nothing.
+        """
         self.candle_chart_stacked_widget = QtWidgets.QWidget()
         self.candle_chart_stacked_widget.setStyleSheet(
             "background-color: rgb(0, 0, 0);"

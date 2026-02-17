@@ -6,13 +6,21 @@ from PyQt6 import QtWidgets, QtGui
 
 
 class LinearDecisionsBuilder:
-    def __init__(self):
+    """
+    This class is responsible for creating tab for linear chart.
+    """
+
+    def __init__(self) -> None:
         self.linear_decisions_stacked_widget = None
         self.widget_linear_decisions_place = None
 
         self.horizontal_layout_14 = None
 
-    def linear_decisions_setup(self):
+    def linear_decisions_setup(self) -> None:
+        """
+        This method is responsible for creating tab content.
+        :return: nothing.
+        """
         self.linear_decisions_stacked_widget = QtWidgets.QWidget()
         self.linear_decisions_stacked_widget.setStyleSheet("background-color: black;")
         self.linear_decisions_stacked_widget.setObjectName(

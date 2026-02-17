@@ -6,7 +6,11 @@ from PyQt6 import QtWidgets, QtGui, QtCore
 
 
 class UserWindowBuilder:
-    def __init__(self):
+    """
+    This class is responsible for create user tab in application main window.
+    """
+
+    def __init__(self) -> None:
         self.user_data_stacked_widget = None
         self.label_user_data_name = None
         self.label_user_data_name_value = None
@@ -30,7 +34,11 @@ class UserWindowBuilder:
         self.horizontal_layout_25 = None
         self.horizontal_layout_26 = None
 
-    def user_window_setup(self):
+    def user_window_setup(self) -> None:
+        """
+        This method is responsible for create tab content.
+        :return: nothing.
+        """
         self.user_data_stacked_widget = QtWidgets.QWidget()
         self.user_data_stacked_widget.setObjectName("userDataStackedWidget")
         self.horizontal_layout_28 = QtWidgets.QHBoxLayout(self.user_data_stacked_widget)

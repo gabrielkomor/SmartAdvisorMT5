@@ -1,3 +1,7 @@
+"""
+This file is responsible for the logic of the main application window.
+"""
+
 import os
 import numpy as np
 import MetaTrader5 as mt5
@@ -19,7 +23,11 @@ from src.backend.metatrader_backend import get_account_open_positions
 
 
 class MainWindowBackend:
-    def __init__(self, gui, user_server, user_login, user_password):
+    """
+    This class is responsible for main window logic.
+    """
+
+    def __init__(self, gui, user_server, user_login, user_password) -> None:
         self.gui = gui
         self.stock_symbols = None
         self.candle_chart_data = None
@@ -28,11 +36,19 @@ class MainWindowBackend:
         self.user_login = user_login
         self.user_password = user_password
 
-    def update_stock_icons_data(self):
+    def update_stock_icons_data(self) -> None:
+        """
+        This method is responsible for update stock icons data in application.
+        :return: nothing.
+        """
         log_in(self.user_login, self.user_password, self.user_server)
         self.stock_symbols = get_account_symbols()
 
-    def update_slider(self):
+    def update_slider(self) -> None:
+        """
+        This method is responsible for update slider data in application.
+        :return: nothing.
+        """
         min_value, max_value = 0, 0
         try:
             selected_time_frame = (
@@ -57,17 +73,29 @@ class MainWindowBackend:
         except Exception as error:
             print(f"Error: {error}")
 
-    def update_slider_value(self):
+    def update_slider_value(self) -> None:
+        """
+        This method is responsible for update slider values.
+        :return: nothing.
+        """
         slider_value = self.gui.horizontal_slider_download_data_td.value()
         self.gui.label_download_data_value_slider.setText(f"Value: {slider_value} days")
 
-    def update_backward_slider_value(self):
+    def update_backward_slider_value(self) -> None:
+        """
+        This method is responsible for update backward slier values.
+        :return: nothing.
+        """
         slider_value = self.gui.horizontal_slider_download_data_tb.value()
         self.gui.label_download_data_backwards_value.setText(
             f"Value: -{slider_value} days"
         )
 
-    def update_combobox_value(self):
+    def update_combobox_value(self) -> None:
+        """
+        This method is responsible for update combo box values.
+        :return: nothing.
+        """
         self.update_slider()
         self.gui.combo_box_download_data_symbol.clear()
 
@@ -85,12 +113,20 @@ class MainWindowBackend:
         self.candle_chart_data = 0
         self.history_data = 0
 
-    def change_user_name(self):
+    def change_user_name(self) -> None:
+        """
+        This method is responsible for change username in ui.
+        :return: nothing.
+        """
         user_name = LogInUi.login_email
         user_name = user_name.split("@")[0]
         self.gui.user_name_label.setText(f"{user_name}")
 
-    def change_user_password(self):
+    def change_user_password(self) -> None:
+        """
+        This method is responsible for changing user password via application form.
+        :return: nothing.
+        """
         try:
             user_email = LogInUi.login_email
             hashed_email = encrypt_email(user_email)
@@ -114,7 +150,11 @@ class MainWindowBackend:
         except Exception as error:
             print(f"Error: {error}")
 
-    def update_user_data(self):
+    def update_user_data(self) -> None:
+        """
+        This method is responsible for update user transaction data.
+        :return: nothing.
+        """
         account_info = get_account_info()
         user_name = LogInUi.login_email
         user_name = user_name.split("@")[0]
@@ -127,7 +167,12 @@ class MainWindowBackend:
         self.gui.label_user_data_profit_value.setText(f"{account_profit} USD")
         self.gui.label_user_data_equity_value.setText(f"{account_equity} USD")
 
-    def change_experts_icons(self, icons):
+    def change_experts_icons(self, icons) -> None:
+        """
+        This method is responsible for change experts icons on ui.
+        :param icons: images.
+        :return: nothing.
+        """
         experts_graphics = {
             "sma": lambda path: self.gui.label_sma_decision.setPixmap(
                 QtGui.QPixmap(path)
@@ -153,7 +198,12 @@ class MainWindowBackend:
         for expert, icon in zip(experts_graphics.keys(), icons):
             experts_graphics[expert](f"src\\assets\\{icon}Icon.png")
 
-    def change_aggregation_icons(self, icons):
+    def change_aggregation_icons(self, icons) -> None:
+        """
+        This method is responsible for changing icons for aggregation methods in ui.
+        :param icons: images.
+        :return: nothing.
+        """
         aggregation_graphics = {
             "additive": lambda path: self.gui.label_additive_decision.setPixmap(
                 QtGui.QPixmap(path)
@@ -169,7 +219,11 @@ class MainWindowBackend:
         for aggregation, icon in zip(aggregation_graphics.keys(), icons):
             aggregation_graphics[aggregation](f"src\\assets\\{icon}Icon.png")
 
-    def download_data_button(self):
+    def download_data_button(self) -> None:
+        """
+        This method is responsible for download data button logic.
+        :return: nothing.
+        """
         try:
             forex = False
             error = False
@@ -264,7 +318,11 @@ class MainWindowBackend:
             print(f"error: {error}")
             self.gui.label_download_data_success.setText("Data download error")
 
-    def make_transaction(self):
+    def make_transaction(self) -> None:
+        """
+        This method is responsible for make transaction button logic.
+        :return: nothing.
+        """
         trade_symbol = self.gui.line_edit_start_trade_symbol.text()
         trade_volume = self.gui.line_edit_start_trade_volume.text()
         trade_comment = self.gui.line_edit_start_trade_comment.text()
@@ -368,7 +426,19 @@ class MainWindowBackend:
                 self.gui.label_start_trade_error.setText("Incorrect data")
                 print(f"Error: {error}")
 
-    def add_row(self, symbol, price, volume, action_type, sl, tp, comment, profit):
+    def add_row(self, symbol, price, volume, action_type, sl, tp, comment, profit) -> None:
+        """
+        This method is responsible for adding new row in trading table.
+        :param symbol: transaction symbol.
+        :param price: transaction price.
+        :param volume: transaction volume.
+        :param action_type: buy / sell / hold.
+        :param sl: stop loss.
+        :param tp: take profit.
+        :param comment: transaction comment.
+        :param profit: transaction profit.
+        :return: nothing.
+        """
         row = [
             QStandardItem(str(symbol)),
             QStandardItem(str(price)),
@@ -381,7 +451,14 @@ class MainWindowBackend:
         ]
         self.gui.table_model.appendRow(row)
 
-    def remove_row_by_symbol(self, symbol, volume, comment):
+    def remove_row_by_symbol(self, symbol, volume, comment) -> None:
+        """
+        This method is responsible for remove row from transaction table.
+        :param symbol: transaction symbol.
+        :param volume: transaction volume.
+        :param comment: transaction comment.
+        :return: nothing.
+        """
         row_count = self.gui.table_model.rowCount()
 
         for row in reversed(range(row_count)):
@@ -395,7 +472,11 @@ class MainWindowBackend:
         self.gui.table_view_start_trade.setModel(self.gui.table_model)
         self.gui.table_view_start_trade.viewport().update()
 
-    def insert_opened_positions(self):
+    def insert_opened_positions(self) -> None:
+        """
+        This method is responsible for adding new opened transaction position into table.
+        :return: nothing.
+        """
         positions = get_account_open_positions()
         self.gui.table_model.removeRows(0, self.gui.table_model.rowCount())
 
@@ -423,7 +504,12 @@ class MainWindowBackend:
                     str(profit[i]),
                 )
 
-    def close_app(self, active_window):
+    def close_app(self, active_window) -> None:
+        """
+        This method is responsible for close main window application and delete charts.
+        :param active_window: main window.
+        :return: nothing.
+        """
         charts = np.array(
             [
                 "chart.html",

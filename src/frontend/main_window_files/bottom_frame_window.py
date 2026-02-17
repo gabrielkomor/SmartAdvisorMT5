@@ -6,7 +6,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class BottomFrameBuilder:
-    def __init__(self, central_widget):
+    """
+    This class is responsible for creating bottom bar in main application window.
+    """
+
+    def __init__(self, central_widget) -> None:
         self.central_widget = central_widget
         self.bottom_frame = None
         self.label_additive = None
@@ -19,7 +23,11 @@ class BottomFrameBuilder:
         self.horizontal_layout_2 = None
         self.horizontal_layout_3 = None
 
-    def bottom_frame_setup(self):
+    def bottom_frame_setup(self) -> None:
+        """
+        This method is responsible for creating bottom bar content.
+        :return: nothing.
+        """
         self.bottom_frame = QtWidgets.QFrame(parent=self.central_widget)
         self.bottom_frame.setMinimumSize(QtCore.QSize(0, 40))
         self.bottom_frame.setMaximumSize(QtCore.QSize(16777215, 70))

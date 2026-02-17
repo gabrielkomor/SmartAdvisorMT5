@@ -6,13 +6,21 @@ from PyQt6 import QtWidgets, QtGui
 
 
 class HistDecisionBuilder:
-    def __init__(self):
+    """
+    This class is responsible for creating tab for historical decisions chart.
+    """
+
+    def __init__(self) -> None:
         self.hist_decisions_stacked_widget = None
         self.widget_hist_decision_place = None
 
         self.horizontal_layout_13 = None
 
-    def hist_decision_setup(self):
+    def hist_decision_setup(self) -> None:
+        """
+        This method is responsible for creating tab content.
+        :return: nothing.
+        """
         self.hist_decisions_stacked_widget = QtWidgets.QWidget()
         self.hist_decisions_stacked_widget.setStyleSheet("background-color: black;")
         self.hist_decisions_stacked_widget.setObjectName("histDecisionsStackedWidget")
