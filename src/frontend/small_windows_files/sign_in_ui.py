@@ -1,17 +1,16 @@
 """
-This file contains a class that creates a login window for the MetaTrader 5 platform.
+This file contains a class that creates the registration window.
 """
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class LogInMt5Ui(object):
+class SignInUi(object):
     """
-    This class is responsible for create login into MetaTrader 5 window.
+    This class is responsible for create sign in window.
     """
-    user_login = None
-    user_password = None
-    user_server = None
+    global_otp = ""
+    global_email = ""
 
     def __init__(self) -> None:
         self.horizontal_layout_2 = None
@@ -20,7 +19,6 @@ class LogInMt5Ui(object):
         self.label_image = None
         self.right_frame = None
         self.vertical_layout = None
-        self.label = None
         self.email_label = None
         self.text_email = None
         self.password_label = None
@@ -30,6 +28,7 @@ class LogInMt5Ui(object):
         self.label_error = None
         self.horizontal_layout = None
         self.push_button_log_in = None
+        self.push_button_sign_in = None
         self.window = None
         self.ui = None
 
@@ -76,37 +75,11 @@ class LogInMt5Ui(object):
         self.right_frame.setObjectName("rightFrame")
         self.vertical_layout = QtWidgets.QVBoxLayout(self.right_frame)
         self.vertical_layout.setObjectName("verticalLayout")
-        spacer_item = QtWidgets.QSpacerItem(
-            20,
-            40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding,
-        )
-        self.vertical_layout.addItem(spacer_item)
-        self.label = QtWidgets.QLabel(parent=self.right_frame)
-        font = QtGui.QFont()
-        font.setFamily("Maiandra GD")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color: white;")
-        self.label.setObjectName("label")
-        self.vertical_layout.addWidget(
-            self.label, 0, QtCore.Qt.AlignmentFlag.AlignHCenter
-        )
-        spacer_item1 = QtWidgets.QSpacerItem(
-            20,
-            40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding,
-        )
-        self.vertical_layout.addItem(spacer_item1)
         self.email_label = QtWidgets.QLabel(parent=self.right_frame)
         self.email_label.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(15)
+        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.email_label.setFont(font)
@@ -121,11 +94,11 @@ class LogInMt5Ui(object):
             self.email_label, 0, QtCore.Qt.AlignmentFlag.AlignLeft
         )
         self.text_email = QtWidgets.QTextEdit(parent=self.right_frame)
-        self.text_email.setMinimumSize(QtCore.QSize(50, 40))
+        self.text_email.setMinimumSize(QtCore.QSize(50, 45))
         self.text_email.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(18)
+        font.setPointSize(20)
         self.text_email.setFont(font)
         self.text_email.viewport().setProperty(
             "cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor)
@@ -152,7 +125,7 @@ class LogInMt5Ui(object):
         self.password_label.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(15)
+        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.password_label.setFont(font)
@@ -163,37 +136,37 @@ class LogInMt5Ui(object):
         self.vertical_layout.addWidget(
             self.password_label, 0, QtCore.Qt.AlignmentFlag.AlignLeft
         )
-        self.text_password = QtWidgets.QTextEdit(parent=self.right_frame)
-        self.text_password.setMinimumSize(QtCore.QSize(50, 40))
+
+        self.text_password = QtWidgets.QLineEdit(parent=self.right_frame)
+        self.text_password.setMinimumSize(QtCore.QSize(50, 45))
         self.text_password.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(18)
+        font.setPointSize(20)
         self.text_password.setFont(font)
-        self.text_password.viewport().setProperty(
-            "cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor)
-        )
-        self.text_password.setStyleSheet(
-            "QTextEdit {\n"
-            "    color: white;\n"
-            "    border-radius: 10px;\n"
-            "    background-color: rgb(54, 54, 54);\n"
-            "}\n"
-            "\n"
-            "QTextEdit:hover {\n"
-            "    color: white;\n"
-            "    border-radius: 10px;\n"
-            "    background-color: rgb(54, 54, 54);\n"
-            "    border: 2px solid rgb(0, 0, 0);\n"
-            "}"
-        )
+        self.text_password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+        self.text_password.setStyleSheet("""
+                    QLineEdit {
+                        color: white;
+                        border-radius: 10px;
+                        background-color: rgb(54, 54, 54);
+                        border: 2px solid transparent;
+                    }
+                    QLineEdit:hover {
+                        color: white;\n
+                        border-radius: 10px;\n
+                        background-color: rgb(54, 54, 54);\n
+                        border: 2px solid rgb(0, 0, 0);\n
+                    }
+                """)
+
         self.text_password.setObjectName("textPassword")
         self.vertical_layout.addWidget(self.text_password)
         self.password_label_confirm = QtWidgets.QLabel(parent=self.right_frame)
         self.password_label_confirm.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(15)
+        font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.password_label_confirm.setFont(font)
@@ -202,34 +175,36 @@ class LogInMt5Ui(object):
         )
         self.password_label_confirm.setObjectName("passwordLabelConfirm")
         self.vertical_layout.addWidget(self.password_label_confirm)
+
         self.text_password_confirm = QtWidgets.QLineEdit(parent=self.right_frame)
-        self.text_password_confirm.setMinimumSize(QtCore.QSize(50, 40))
+        self.text_password_confirm.setMinimumSize(QtCore.QSize(50, 45))
         self.text_password_confirm.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(18)
+        font.setPointSize(20)
         self.text_password_confirm.setFont(font)
         self.text_password_confirm.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.text_password_confirm.setStyleSheet("""
-            QLineEdit {
-                color: white;
-                border-radius: 10px;
-                background-color: rgb(54, 54, 54);
-                border: 2px solid transparent;
-            }
-            QLineEdit:hover {
-                color: white;\n
-                border-radius: 10px;\n
-                background-color: rgb(54, 54, 54);\n
-                border: 2px solid rgb(0, 0, 0);\n
-            }
-        """)
+                            QLineEdit {
+                                color: white;
+                                border-radius: 10px;
+                                background-color: rgb(54, 54, 54);
+                                border: 2px solid transparent;
+                            }
+                            QLineEdit:hover {
+                                color: white;\n
+                                border-radius: 10px;\n
+                                background-color: rgb(54, 54, 54);\n
+                                border: 2px solid rgb(0, 0, 0);\n
+                            }
+                        """)
+
         self.text_password_confirm.setObjectName("textPasswordConfirm")
         self.vertical_layout.addWidget(self.text_password_confirm)
         self.label_error = QtWidgets.QLabel(parent=self.right_frame)
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(15)
+        font.setPointSize(17)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -244,23 +219,25 @@ class LogInMt5Ui(object):
         self.vertical_layout.addWidget(
             self.label_error, 0, QtCore.Qt.AlignmentFlag.AlignHCenter
         )
-        spacer_item2 = QtWidgets.QSpacerItem(
+        spacer_item = QtWidgets.QSpacerItem(
             20,
             40,
             QtWidgets.QSizePolicy.Policy.Minimum,
             QtWidgets.QSizePolicy.Policy.Expanding,
         )
-        self.vertical_layout.addItem(spacer_item2)
+        self.vertical_layout.addItem(spacer_item)
         self.horizontal_layout = QtWidgets.QHBoxLayout()
         self.horizontal_layout.setSizeConstraint(
             QtWidgets.QLayout.SizeConstraint.SetMaximumSize
         )
         self.horizontal_layout.setObjectName("horizontalLayout")
         self.push_button_log_in = QtWidgets.QPushButton(parent=self.right_frame)
-        self.push_button_log_in.setMinimumSize(QtCore.QSize(140, 40))
+        self.push_button_log_in.setMinimumSize(QtCore.QSize(140, 45))
         self.push_button_log_in.setMaximumSize(QtCore.QSize(16777215, 80))
         font = QtGui.QFont()
         font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
         self.push_button_log_in.setFont(font)
         self.push_button_log_in.setCursor(
             QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor)
@@ -288,43 +265,122 @@ class LogInMt5Ui(object):
         )
         self.push_button_log_in.setObjectName("pushButtonLogIn")
         self.horizontal_layout.addWidget(self.push_button_log_in)
+        spacer_item1 = QtWidgets.QSpacerItem(
+            30,
+            20,
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+        )
+        self.horizontal_layout.addItem(spacer_item1)
+        self.push_button_sign_in = QtWidgets.QPushButton(parent=self.right_frame)
+        self.push_button_sign_in.setMinimumSize(QtCore.QSize(140, 45))
+        self.push_button_sign_in.setMaximumSize(QtCore.QSize(16777215, 80))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.push_button_sign_in.setFont(font)
+        self.push_button_sign_in.setCursor(
+            QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+        )
+        self.push_button_sign_in.setStyleSheet(
+            "QPushButton {\n"
+            "    color: white;\n"
+            "    background-color: rgb(90, 90, 90);\n"
+            "    border-radius: 10px;\n"
+            "    border: 2px solid rgb(70, 70, 70); \n"
+            "    padding: 5px 10px; \n"
+            "    font-size: 14px; \n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: rgb(120, 120, 120); \n"
+            "    border: 2px solid rgb(0, 0, 0);\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: rgb(70, 70, 70); \n"
+            "    border: 2px solid rgb(0, 0, 0);\n"
+            "}"
+        )
+        self.push_button_sign_in.setObjectName("pushButtonSignIn")
+        self.horizontal_layout.addWidget(self.push_button_sign_in)
         self.vertical_layout.addLayout(self.horizontal_layout)
         self.horizontal_layout_2.addWidget(self.right_frame)
         self.re_translate_ui(form)
         QtCore.QMetaObject.connectSlotsByName(form)
-        self.push_button_log_in.clicked.connect(lambda: self.mt5_log_in_btn(form))
+        self.push_button_log_in.clicked.connect(
+            lambda: self.sign_in_ui_log_in_btn(form)
+        )
+        self.push_button_sign_in.clicked.connect(self.sign_in_ui_sign_in_btn)
+        self.push_button_sign_in.clicked.connect(form.close)
 
-    def mt5_log_in_btn(self, active_window) -> None:
+    def sign_in_ui_log_in_btn(self, active_window) -> None:
         """
-        This method is responsible for creating button on ui.
+        This method is responsible for creating button on ui ond these functionality.
         :param active_window: window.
         :return: nothing.
         """
         try:
-            from src.backend.metatrader_backend import log_in
+            from src.backend.two_step_login_email import two_step_login
+            from src.backend.data_base_connection import (
+                create_db,
+                save_email_in_db,
+                save_password_in_db,
+                check_email_in_db,
+            )
+            from src.backend.encryption_file import (
+                encrypt_password,
+                encrypt,
+                encrypt_email,
+            )
 
-            user_server = self.text_email.toPlainText()
-            user_login = self.text_password.toPlainText()
-            user_password = self.text_password_confirm.text()
+            email = self.text_email.toPlainText()
+            password = self.text_password.text()
+            password_confirm = self.text_password_confirm.text()
+            hashed_email = encrypt_email(email)
+            create_db("users")
 
-            try:
-                user_login = int(user_login)
-            except Exception as error:
-                print(f"Error: {error}")
-                user_login = 0
-
-            if log_in(user_login, user_password, user_server):
-                import src.frontend.main_window_ui as main_window
-
-                self.window = QtWidgets.QMainWindow()
-                self.ui = main_window.UiMainWindow()
-                self.ui.setup_ui(self.window)
-                self.window.show()
-                active_window.close()
+            if password != password_confirm:
+                self.label_error.setText("Passwords are different")
+            elif len(password) < 5:
+                self.label_error.setText("Password too short")
+            elif "@" not in email:
+                self.label_error.setText("Incorrect e-mail address")
+            elif check_email_in_db("users", hashed_email):
+                self.label_error.setText("Account already exist")
             else:
-                self.label_error.setText("Login failed")
+                condition, SignInUi.global_otp = two_step_login(email)
+                if condition:
+                    hashed_password = encrypt_password(password)
+                    SignInUi.global_email = email
+                    save_email_in_db("users", hashed_email)
+                    save_password_in_db("users", hashed_email, hashed_password)
+
+                    import src.frontend.small_windows_files.email_verification_ui as email_verify_window
+
+                    self.window = QtWidgets.QWidget()
+                    self.ui = email_verify_window.EmailVerificationUi()
+                    self.ui.setup_ui(self.window)
+                    self.window.show()
+                    active_window.close()
+                    active_window.deleteLater()
+                else:
+                    self.label_error.setText("Incorrect e-mail address")
         except Exception as error:
             print(f"Error: {error}")
+
+    def sign_in_ui_sign_in_btn(self) -> None:
+        """
+        This method is responsible for creating button on ui.
+        :return: nothing.
+        """
+        import src.frontend.small_windows_files.log_in_ui as log_in_window
+
+        self.window = QtWidgets.QWidget()
+        self.ui = log_in_window.LogInUi()
+        self.ui.setup_ui(self.window)
+        self.window.show()
 
     def re_translate_ui(self, form) -> None:
         """
@@ -335,17 +391,16 @@ class LogInMt5Ui(object):
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
-        self.label.setText(_translate("Form", "Log into MT5 account"))
-        self.email_label.setText(_translate("Form", "Server"))
-        self.text_email.setPlaceholderText(_translate("Form", "Enter server name"))
-        self.password_label.setText(_translate("Form", "Login"))
-        self.text_password.setPlaceholderText(_translate("Form", "Enter your login"))
-        self.password_label_confirm.setText(_translate("Form", "Password"))
+        self.email_label.setText(_translate("Form", "Email"))
+        self.text_email.setPlaceholderText(_translate("Form", "Enter your email"))
+        self.password_label.setText(_translate("Form", "Password"))
+        self.text_password.setPlaceholderText(_translate("Form", "Enter your password"))
+        self.password_label_confirm.setText(_translate("Form", "Confirm password"))
         self.text_password_confirm.setPlaceholderText(
-            _translate("Form", "Enter your password")
+            _translate("Form", "Confirm your password")
         )
-        self.label_error.setText(_translate("Form", ""))
-        self.push_button_log_in.setText(_translate("Form", "Log in into MT5"))
+        self.push_button_log_in.setText(_translate("Form", "Create account"))
+        self.push_button_sign_in.setText(_translate("Form", "Back"))
 
 
 if __name__ == "__main__":
@@ -353,7 +408,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = LogInMt5Ui()
+    ui = SignInUi()
     ui.setup_ui(Form)
     Form.show()
     sys.exit(app.exec())

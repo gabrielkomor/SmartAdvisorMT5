@@ -1,14 +1,18 @@
 """
-This file contains a class that creates a two-factor login window/
+This file contains a class that creates a login window for the MetaTrader 5 platform.
 """
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class LogInTwoStepUi(object):
+class LogInMt5Ui(object):
     """
-    This class is responsible for create two-step login window.
+    This class is responsible for create login into MetaTrader 5 window.
     """
+    user_login = None
+    user_password = None
+    user_server = None
+
     def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
@@ -16,8 +20,13 @@ class LogInTwoStepUi(object):
         self.label_image = None
         self.right_frame = None
         self.vertical_layout = None
+        self.label = None
+        self.email_label = None
+        self.text_email = None
         self.password_label = None
         self.text_password = None
+        self.password_label_confirm = None
+        self.text_password_confirm = None
         self.label_error = None
         self.horizontal_layout = None
         self.push_button_log_in = None
@@ -74,27 +83,92 @@ class LogInTwoStepUi(object):
             QtWidgets.QSizePolicy.Policy.Expanding,
         )
         self.vertical_layout.addItem(spacer_item)
+        self.label = QtWidgets.QLabel(parent=self.right_frame)
+        font = QtGui.QFont()
+        font.setFamily("Maiandra GD")
+        font.setPointSize(19)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: white;")
+        self.label.setObjectName("label")
+        self.vertical_layout.addWidget(
+            self.label, 0, QtCore.Qt.AlignmentFlag.AlignHCenter
+        )
+        spacer_item1 = QtWidgets.QSpacerItem(
+            20,
+            40,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+            QtWidgets.QSizePolicy.Policy.Expanding,
+        )
+        self.vertical_layout.addItem(spacer_item1)
+        self.email_label = QtWidgets.QLabel(parent=self.right_frame)
+        self.email_label.setMaximumSize(QtCore.QSize(16777215, 60))
+        font = QtGui.QFont()
+        font.setFamily("Maiandra GD")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.email_label.setFont(font)
+        self.email_label.setStyleSheet(
+            "color: white;\n"
+            "background-color: rgba(0,0,0,0);\n"
+            "margin-top: 5px;\n"
+            ""
+        )
+        self.email_label.setObjectName("emailLabel")
+        self.vertical_layout.addWidget(
+            self.email_label, 0, QtCore.Qt.AlignmentFlag.AlignLeft
+        )
+        self.text_email = QtWidgets.QTextEdit(parent=self.right_frame)
+        self.text_email.setMinimumSize(QtCore.QSize(50, 40))
+        self.text_email.setMaximumSize(QtCore.QSize(16777215, 45))
+        font = QtGui.QFont()
+        font.setFamily("Maiandra GD")
+        font.setPointSize(18)
+        self.text_email.setFont(font)
+        self.text_email.viewport().setProperty(
+            "cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor)
+        )
+        self.text_email.setStyleSheet(
+            "QTextEdit {\n"
+            "    color: white;\n"
+            "    border-radius: 10px;\n"
+            "    background-color: rgb(54, 54, 54);\n"
+            "}\n"
+            "\n"
+            "QTextEdit:hover {\n"
+            "    color: white;\n"
+            "    border-radius: 10px;\n"
+            "    background-color: rgb(54, 54, 54);\n"
+            "    border: 2px solid rgb(0, 0, 0);\n"
+            "}"
+        )
+        self.text_email.setObjectName("textEmail")
+        self.vertical_layout.addWidget(
+            self.text_email, 0, QtCore.Qt.AlignmentFlag.AlignVCenter
+        )
         self.password_label = QtWidgets.QLabel(parent=self.right_frame)
         self.password_label.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(20)
+        font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
         self.password_label.setFont(font)
         self.password_label.setStyleSheet(
-            "color: white;\n" "background-color: rgba(0,0,0,0);\n" "margin-top: 10px;"
+            "color: white;\n" "background-color: rgba(0,0,0,0);\n" "margin-top: 5px;"
         )
         self.password_label.setObjectName("passwordLabel")
         self.vertical_layout.addWidget(
             self.password_label, 0, QtCore.Qt.AlignmentFlag.AlignLeft
         )
         self.text_password = QtWidgets.QTextEdit(parent=self.right_frame)
-        self.text_password.setMinimumSize(QtCore.QSize(50, 45))
+        self.text_password.setMinimumSize(QtCore.QSize(50, 40))
         self.text_password.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.text_password.setFont(font)
         self.text_password.viewport().setProperty(
             "cursor", QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor)
@@ -115,10 +189,47 @@ class LogInTwoStepUi(object):
         )
         self.text_password.setObjectName("textPassword")
         self.vertical_layout.addWidget(self.text_password)
+        self.password_label_confirm = QtWidgets.QLabel(parent=self.right_frame)
+        self.password_label_confirm.setMaximumSize(QtCore.QSize(16777215, 60))
+        font = QtGui.QFont()
+        font.setFamily("Maiandra GD")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.password_label_confirm.setFont(font)
+        self.password_label_confirm.setStyleSheet(
+            "color: white;\n" "background-color: rgba(0,0,0,0);\n" "margin-top: 5px;"
+        )
+        self.password_label_confirm.setObjectName("passwordLabelConfirm")
+        self.vertical_layout.addWidget(self.password_label_confirm)
+        self.text_password_confirm = QtWidgets.QLineEdit(parent=self.right_frame)
+        self.text_password_confirm.setMinimumSize(QtCore.QSize(50, 40))
+        self.text_password_confirm.setMaximumSize(QtCore.QSize(16777215, 45))
+        font = QtGui.QFont()
+        font.setFamily("Maiandra GD")
+        font.setPointSize(18)
+        self.text_password_confirm.setFont(font)
+        self.text_password_confirm.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+        self.text_password_confirm.setStyleSheet("""
+            QLineEdit {
+                color: white;
+                border-radius: 10px;
+                background-color: rgb(54, 54, 54);
+                border: 2px solid transparent;
+            }
+            QLineEdit:hover {
+                color: white;\n
+                border-radius: 10px;\n
+                background-color: rgb(54, 54, 54);\n
+                border: 2px solid rgb(0, 0, 0);\n
+            }
+        """)
+        self.text_password_confirm.setObjectName("textPasswordConfirm")
+        self.vertical_layout.addWidget(self.text_password_confirm)
         self.label_error = QtWidgets.QLabel(parent=self.right_frame)
         font = QtGui.QFont()
         font.setFamily("Maiandra GD")
-        font.setPointSize(17)
+        font.setPointSize(15)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -126,29 +237,27 @@ class LogInTwoStepUi(object):
         self.label_error.setStyleSheet(
             "background-color: rgba(0,0,0,0);\n"
             "color: red;\n"
-            "margin-top: 10px;\n"
-            "margin-bottom: 10px;"
+            "margin-top: 5px;\n"
+            "margin-bottom: 5px;"
         )
         self.label_error.setObjectName("labelError")
         self.vertical_layout.addWidget(
-            self.label_error,
-            0,
-            QtCore.Qt.AlignmentFlag.AlignHCenter | QtCore.Qt.AlignmentFlag.AlignVCenter,
+            self.label_error, 0, QtCore.Qt.AlignmentFlag.AlignHCenter
         )
-        spacer_item1 = QtWidgets.QSpacerItem(
+        spacer_item2 = QtWidgets.QSpacerItem(
             20,
             40,
             QtWidgets.QSizePolicy.Policy.Minimum,
             QtWidgets.QSizePolicy.Policy.Expanding,
         )
-        self.vertical_layout.addItem(spacer_item1)
+        self.vertical_layout.addItem(spacer_item2)
         self.horizontal_layout = QtWidgets.QHBoxLayout()
         self.horizontal_layout.setSizeConstraint(
             QtWidgets.QLayout.SizeConstraint.SetMaximumSize
         )
         self.horizontal_layout.setObjectName("horizontalLayout")
         self.push_button_log_in = QtWidgets.QPushButton(parent=self.right_frame)
-        self.push_button_log_in.setMinimumSize(QtCore.QSize(140, 50))
+        self.push_button_log_in.setMinimumSize(QtCore.QSize(140, 40))
         self.push_button_log_in.setMaximumSize(QtCore.QSize(16777215, 80))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -183,38 +292,39 @@ class LogInTwoStepUi(object):
         self.horizontal_layout_2.addWidget(self.right_frame)
         self.re_translate_ui(form)
         QtCore.QMetaObject.connectSlotsByName(form)
-        self.push_button_log_in.clicked.connect(
-            lambda: self.log_in_two_step_verify_btn(form)
-        )
+        self.push_button_log_in.clicked.connect(lambda: self.mt5_log_in_btn(form))
 
-    def log_in_two_step_verify_btn(self, active_window) -> None:
+    def mt5_log_in_btn(self, active_window) -> None:
         """
-        This method is responsible for creating button on ui ond these functionality.
+        This method is responsible for creating button on ui.
         :param active_window: window.
         :return: nothing.
         """
-        from src.backend.google_authenticator import verify_qr_code
-        from src.backend.data_base_connection import get_secret_from_db
-        from src.backend.encryption_file import decrypt, encrypt_email
-        from src.frontend.log_in_ui import LogInUi
+        try:
+            from src.backend.metatrader_backend import log_in
 
-        email = LogInUi.login_email
-        hashed_email = encrypt_email(email)
-        secret = get_secret_from_db("users", hashed_email)
-        decrypted_secret = decrypt(secret)
-        code = self.text_password.toPlainText()
+            user_server = self.text_email.toPlainText()
+            user_login = self.text_password.toPlainText()
+            user_password = self.text_password_confirm.text()
 
-        if verify_qr_code(code, decrypted_secret):
-            self.label_error.setText("Login correctly!")
-            import src.frontend.log_in_mt5_ui as log_in_mt5_window
+            try:
+                user_login = int(user_login)
+            except Exception as error:
+                print(f"Error: {error}")
+                user_login = 0
 
-            self.window = QtWidgets.QWidget()
-            self.ui = log_in_mt5_window.LogInMt5Ui()
-            self.ui.setup_ui(self.window)
-            self.window.show()
-            active_window.close()
-        else:
-            self.label_error.setText("Code is incorrect")
+            if log_in(user_login, user_password, user_server):
+                import src.frontend.small_windows_files.main_window_ui as main_window
+
+                self.window = QtWidgets.QMainWindow()
+                self.ui = main_window.UiMainWindow()
+                self.ui.setup_ui(self.window)
+                self.window.show()
+                active_window.close()
+            else:
+                self.label_error.setText("Login failed")
+        except Exception as error:
+            print(f"Error: {error}")
 
     def re_translate_ui(self, form) -> None:
         """
@@ -225,9 +335,17 @@ class LogInTwoStepUi(object):
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
-        self.password_label.setText(_translate("Form", "Two-step login"))
-        self.text_password.setPlaceholderText(_translate("Form", "Enter your otp code"))
-        self.push_button_log_in.setText(_translate("Form", "Log in"))
+        self.label.setText(_translate("Form", "Log into MT5 account"))
+        self.email_label.setText(_translate("Form", "Server"))
+        self.text_email.setPlaceholderText(_translate("Form", "Enter server name"))
+        self.password_label.setText(_translate("Form", "Login"))
+        self.text_password.setPlaceholderText(_translate("Form", "Enter your login"))
+        self.password_label_confirm.setText(_translate("Form", "Password"))
+        self.text_password_confirm.setPlaceholderText(
+            _translate("Form", "Enter your password")
+        )
+        self.label_error.setText(_translate("Form", ""))
+        self.push_button_log_in.setText(_translate("Form", "Log in into MT5"))
 
 
 if __name__ == "__main__":
@@ -235,7 +353,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = LogInTwoStepUi()
+    ui = LogInMt5Ui()
     ui.setup_ui(Form)
     Form.show()
     sys.exit(app.exec())

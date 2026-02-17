@@ -10,8 +10,8 @@ from PyQt6 import QtGui, QtWidgets
 from PyQt6.QtCore import QUrl
 from PyQt6.QtGui import QStandardItem
 
-import src.frontend.log_in_ui as log_in_window
-from src.frontend.log_in_ui import LogInUi
+import src.frontend.small_windows_files.log_in_ui as log_in_window
+from src.frontend.small_windows_files.log_in_ui import LogInUi
 from src.backend.metatrader_backend import log_in, get_account_symbols
 from src.backend.encryption_file import verify_hashed_password
 from src.backend.encryption_file import encrypt_email, encrypt_password
