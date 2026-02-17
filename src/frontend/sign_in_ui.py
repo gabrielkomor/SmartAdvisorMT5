@@ -1,11 +1,18 @@
+"""
+This file contains a class that creates the registration window.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class SignInUi(object):
+    """
+    This class is responsible for create sign in window.
+    """
     global_otp = ""
     global_email = ""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
         self.vertical_layout_2 = None
@@ -25,7 +32,12 @@ class SignInUi(object):
         self.window = None
         self.ui = None
 
-    def setup_ui(self, form):
+    def setup_ui(self, form) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form: window.
+        :return: nothing.
+        """
         form.setObjectName("Form")
         form.resize(754, 418)
         font = QtGui.QFont()
@@ -303,7 +315,12 @@ class SignInUi(object):
         self.push_button_sign_in.clicked.connect(self.sign_in_ui_sign_in_btn)
         self.push_button_sign_in.clicked.connect(form.close)
 
-    def sign_in_ui_log_in_btn(self, active_window):
+    def sign_in_ui_log_in_btn(self, active_window) -> None:
+        """
+        This method is responsible for creating button on ui ond these functionality.
+        :param active_window: window.
+        :return: nothing.
+        """
         try:
             from src.backend.two_step_login_email import two_step_login
             from src.backend.data_base_connection import (
@@ -353,7 +370,11 @@ class SignInUi(object):
         except Exception as error:
             print(f"Error: {error}")
 
-    def sign_in_ui_sign_in_btn(self):
+    def sign_in_ui_sign_in_btn(self) -> None:
+        """
+        This method is responsible for creating button on ui.
+        :return: nothing.
+        """
         import src.frontend.log_in_ui as log_in_window
 
         self.window = QtWidgets.QWidget()
@@ -361,7 +382,12 @@ class SignInUi(object):
         self.ui.setup_ui(self.window)
         self.window.show()
 
-    def re_translate_ui(self, form):
+    def re_translate_ui(self, form) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))

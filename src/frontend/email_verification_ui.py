@@ -11,7 +11,7 @@ class EmailVerificationUi(object):
     """
     user_secret = ""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
         self.vertical_layout_2 = None

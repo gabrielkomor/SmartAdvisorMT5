@@ -1,12 +1,19 @@
+"""
+This file contains a class that creates a login window for the MetaTrader 5 platform.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class LogInMt5Ui(object):
+    """
+    This class is responsible for create login into MetaTrader 5 window.
+    """
     user_login = None
     user_password = None
     user_server = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
         self.vertical_layout_2 = None
@@ -26,7 +33,12 @@ class LogInMt5Ui(object):
         self.window = None
         self.ui = None
 
-    def setup_ui(self, form):
+    def setup_ui(self, form) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form: window.
+        :return: nothing.
+        """
         form.setObjectName("Form")
         form.resize(754, 418)
         font = QtGui.QFont()
@@ -282,7 +294,12 @@ class LogInMt5Ui(object):
         QtCore.QMetaObject.connectSlotsByName(form)
         self.push_button_log_in.clicked.connect(lambda: self.mt5_log_in_btn(form))
 
-    def mt5_log_in_btn(self, active_window):
+    def mt5_log_in_btn(self, active_window) -> None:
+        """
+        This method is responsible for creating button on ui.
+        :param active_window: window.
+        :return: nothing.
+        """
         try:
             from src.backend.metatrader_backend import log_in
 
@@ -309,7 +326,12 @@ class LogInMt5Ui(object):
         except Exception as error:
             print(f"Error: {error}")
 
-    def re_translate_ui(self, form):
+    def re_translate_ui(self, form) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))

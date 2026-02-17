@@ -44,7 +44,7 @@ the MetaTrader 5 trading platform.
 2. Clone git repository using following command:
 
 ```bash
-  https://github.com/gabrielkomor/SmartAdvisorMT5.git
+  git clone https://github.com/gabrielkomor/SmartAdvisorMT5.git
 ```
 
 3. Enter into `.\SmartAdvisorMT5\` directory.
@@ -55,13 +55,19 @@ the MetaTrader 5 trading platform.
   py -3.12 -m venv .venv
 ```
 
-5. Install required libraries (after virtual venv activation):
+5. Activate virtual environment using following command:
+
+```bash
+  .\.venv\Scripts\Activate.ps1
+```
+
+6. Install required libraries (after virtual venv activation):
 
 ```bash
   pip install -r .\requirements.txt
 ```
 
-6. Run application:
+7. Run application:
 
 ```bash
   python main.py

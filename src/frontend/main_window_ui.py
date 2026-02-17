@@ -1,3 +1,7 @@
+"""
+This file contains a class that creates the main application window and the ability to launch it.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QColor, QPalette
 from PyQt6.QtCore import QPropertyAnimation, QEasingCurve, QRect
@@ -22,7 +26,11 @@ from src.frontend.log_in_mt5_ui import LogInMt5Ui
 
 
 class UiMainWindow(object):
-    def __init__(self):
+    """
+    This class is responsible for create main application window.
+    """
+
+    def __init__(self) -> None:
         self.central_widget = None
         self.grid_layout = None
         self.center_frame = None
@@ -153,7 +161,12 @@ class UiMainWindow(object):
         self.stock_data = None
         self.etf_data = None
 
-    def setup_ui(self, main_window):
+    def setup_ui(self, main_window) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form: window.
+        :return: nothing.
+        """
         main_window.setObjectName("MainWindow")
         main_window.resize(1064, 637)
         main_window.setStyleSheet("background-color: rgb(54, 54, 54);")
@@ -551,7 +564,12 @@ class UiMainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(main_window)
         self.set_dark_theme()
 
-        def switch_page_with_animation(new_widget):
+        def switch_page_with_animation(new_widget) -> None:
+            """
+            This function is responsible for ui animations which occur when user switch tabs in application.
+            :param new_widget: new tab.
+            :return: nothing.
+            """
             old_widget = self.stacked_widget.currentWidget()
             if old_widget == new_widget:
                 return
@@ -576,7 +594,11 @@ class UiMainWindow(object):
             self.animation.setEasingCurve(QEasingCurve.Type.OutCubic)
             self.animation.start()
 
-            def stabilize_widget_position():
+            def stabilize_widget_position() -> None:
+                """
+                This function is responsible for stabilize tab position on ui.
+                :return: nothing.
+                """
                 new_widget.setGeometry(end_rect)
                 new_widget.updateGeometry()
 
@@ -733,7 +755,12 @@ class UiMainWindow(object):
             "12 H": (120, 1000),
         }
 
-    def re_translate_ui(self, main_window):
+    def re_translate_ui(self, main_window) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         main_window.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         main_window.setWindowTitle(_translate("MainWindow", "Smart Advisor MT5"))
@@ -885,13 +912,21 @@ class UiMainWindow(object):
         )
 
     @staticmethod
-    def set_dark_theme():
+    def set_dark_theme() -> None:
+        """
+        This method change application theme into dark mode.
+        :return: nothing.
+        """
         dark_palette = QPalette()
         dark_palette.setColor(QPalette.ColorRole.WindowText, QColor("white"))
         QApplication.instance().setPalette(dark_palette)
 
 
-def run_main():
+def run_main() -> None:
+    """
+    This function is responsible for run only application main window.
+    :return: nothing.
+    """
     import sys
 
     app = QtWidgets.QApplication(sys.argv)

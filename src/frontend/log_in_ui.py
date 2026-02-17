@@ -1,12 +1,19 @@
+"""
+This file contains a class that creates the initial login window and starts the application.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtGui import QColor, QPalette
 
 
 class LogInUi(object):
+    """
+    This class is responsible for create login verification window.
+    """
     login_email = ""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
         self.vertical_layout_2 = None
@@ -25,7 +32,12 @@ class LogInUi(object):
         self.window = None
         self.ui = None
 
-    def setup_ui(self, form):
+    def setup_ui(self, form) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form: window.
+        :return: nothing.
+        """
         form.setObjectName("Form")
         form.resize(754, 418)
         font = QtGui.QFont()
@@ -282,7 +294,12 @@ class LogInUi(object):
         self.push_button_sign_in.clicked.connect(form.close)
         self.set_dark_theme()
 
-    def log_in_ui_btn(self, active_window):
+    def log_in_ui_btn(self, active_window) -> None:
+        """
+        This method is responsible for creating button on ui ond these functionality.
+        :param active_window: window.
+        :return: nothing.
+        """
         try:
             from src.backend.data_base_connection import get_password_from_db
             from src.backend.encryption_file import encrypt_email
@@ -313,7 +330,11 @@ class LogInUi(object):
             print(f"Error: {error}")
             self.label_error.setText("Incorrect email or password")
 
-    def log_in_ui_sign_in_btn(self):
+    def log_in_ui_sign_in_btn(self) -> None:
+        """
+        This method is responsible for creating button on ui.
+        :return: nothing.
+        """
         import src.frontend.sign_in_ui as sign_in_window
 
         self.window = QtWidgets.QWidget()
@@ -321,7 +342,12 @@ class LogInUi(object):
         self.ui.setup_ui(self.window)
         self.window.show()
 
-    def re_translate_ui(self, form):
+    def re_translate_ui(self, form) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
@@ -334,13 +360,21 @@ class LogInUi(object):
         self.push_button_sign_in.setText(_translate("Form", "Sign in"))
 
     @staticmethod
-    def set_dark_theme():
+    def set_dark_theme() -> None:
+        """
+        This method is responsible for change application theme into dark mode.
+        :return: nothing.
+        """
         dark_palette = QPalette()
         dark_palette.setColor(QPalette.ColorRole.WindowText, QColor("white"))
         QApplication.instance().setPalette(dark_palette)
 
 
-def run_app():
+def run_app() -> None:
+    """
+    This function is responsible for run application.
+    :return: nothing.
+    """
     import sys
 
     app = QtWidgets.QApplication(sys.argv)

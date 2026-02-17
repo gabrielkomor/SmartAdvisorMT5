@@ -4,7 +4,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class SetUpTwoStepLoginUi(object):
-    def __init__(self):
+    """
+    This class is responsible for create set up two-step login window.
+    """
+
+    def __init__(self) -> None:
         self.horizontal_layout_2 = None
         self.left_frame = None
         self.vertical_layout_2 = None
@@ -26,7 +30,12 @@ class SetUpTwoStepLoginUi(object):
         self.window = None
         self.ui = None
 
-    def setup_ui(self, form_app):
+    def setup_ui(self, form_app) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form_app: window.
+        :return: nothing.
+        """
         form_app.setObjectName("Form")
         form_app.resize(754, 418)
         font = QtGui.QFont()
@@ -287,7 +296,12 @@ class SetUpTwoStepLoginUi(object):
             lambda: self.set_up_two_step_verify_btn(form_app)
         )
 
-    def set_up_two_step_verify_btn(self, active_window):
+    def set_up_two_step_verify_btn(self, active_window) -> None:
+        """
+        This method is responsible for creating button on ui ond these functionality.
+        :param active_window: window.
+        :return: nothing.
+        """
         try:
             from src.backend.google_authenticator import verify_qr_code
             from src.backend.data_base_connection import get_secret_from_db
@@ -316,7 +330,12 @@ class SetUpTwoStepLoginUi(object):
         except Exception as error:
             print(f"Error: {error}")
 
-    def re_translate_ui(self, form_app):
+    def re_translate_ui(self, form_app) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form_app: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         form_app.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form_app.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
