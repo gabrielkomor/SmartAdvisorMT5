@@ -21,8 +21,8 @@ from src.frontend.main_window_files.small_left_frame_window import SmallLeftFram
 from src.frontend.main_window_files.big_left_frame_window import BigLeftFrameBuilder
 from src.frontend.main_window_files.right_frame_window import RightFrameBuilder
 from src.frontend.main_window_files.bottom_frame_window import BottomFrameBuilder
-from src.frontend.main_window_files.main_window_backend import MainWindowBackend
 from src.frontend.small_windows_files.log_in_mt5_ui import LogInMt5Ui
+from src.backend.main_window_backend import MainWindowBackend
 
 
 class UiMainWindow(object):
