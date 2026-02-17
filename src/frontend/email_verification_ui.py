@@ -1,7 +1,14 @@
+"""
+This file contains a class that creates the user's email address verification window.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class EmailVerificationUi(object):
+    """
+    This class is responsible for create email verification window.
+    """
     user_secret = ""
 
     def __init__(self):
@@ -22,7 +29,12 @@ class EmailVerificationUi(object):
         self.window = None
         self.ui = None
 
-    def setup_ui(self, form):
+    def setup_ui(self, form) -> None:
+        """
+        This method is responsible for create window elements.
+        :param form: window.
+        :return: nothing.
+        """
         form.setObjectName("Form")
         form.resize(754, 418)
         font = QtGui.QFont()
@@ -249,7 +261,11 @@ class EmailVerificationUi(object):
         self.push_button_back.clicked.connect(self.evu_back_btn)
         self.push_button_back.clicked.connect(form.close)
 
-    def evu_back_btn(self):
+    def evu_back_btn(self) -> None:
+        """
+        This method is responsible for creating button on ui.
+        :return: nothing.
+        """
         import src.frontend.sign_in_ui as sign_in_window
 
         self.window = QtWidgets.QWidget()
@@ -257,7 +273,12 @@ class EmailVerificationUi(object):
         self.ui.setup_ui(self.window)
         self.window.show()
 
-    def evu_verify_btn(self, active_window):
+    def evu_verify_btn(self, active_window) -> None:
+        """
+        This method is responsible for creating button on ui ond these functionality.
+        :param active_window: window.
+        :return: nothing.
+        """
         from src.frontend.sign_in_ui import SignInUi
 
         user_code = self.text_otp_code.toPlainText()
@@ -287,7 +308,12 @@ class EmailVerificationUi(object):
         else:
             self.label_error.setText("Code is incorrect")
 
-    def re_translate_ui(self, form):
+    def re_translate_ui(self, form) -> None:
+        """
+        This function is responsible for displaying texts on ui.
+        :param form: window.
+        :return: nothing.
+        """
         _translate = QtCore.QCoreApplication.translate
         form.setWindowIcon(QtGui.QIcon("src\\assets\\Icon.png"))
         form.setWindowTitle(_translate("Form", "Smart Advisor MT5"))
