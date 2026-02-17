@@ -6,7 +6,7 @@ import numpy as np
 
 
 def additive_method(
-        signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
 ) -> np.ndarray:
     """
     This function is responsible for aggregate indicator signals values.
@@ -31,7 +31,7 @@ def additive_method(
 
 
 def majority_vote_method(
-        signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
 ) -> np.ndarray:
     """
     This function is responsible for aggregate indicator signals values.
@@ -55,7 +55,7 @@ def majority_vote_method(
 
 
 def median_method(
-        signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
 ) -> np.ndarray:
     """
     This function is responsible for aggregate indicator signals values.
@@ -79,7 +79,7 @@ def median_method(
 
 
 def percentage_method_values(
-        signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
+    signals_buy: np.ndarray, signals_sell: np.ndarray, signals_hold: np.ndarray
 ) -> np.ndarray:
     """
     This function is responsible for aggregate indicator signals values.

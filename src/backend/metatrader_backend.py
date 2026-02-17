@@ -88,7 +88,7 @@ def get_account_open_positions() -> pd.DataFrame:
 
 
 def download_data(
-        symbol: str, days: int, time_frame: int, time_backward: int
+    symbol: str, days: int, time_frame: int, time_backward: int
 ) -> pd.DataFrame:
     """
     This function is used to download historical stock market data from the MetaTrader 5 application.
@@ -99,12 +99,12 @@ def download_data(
     :return: open high low close stock market data
     """
     start: datetime = (
-            datetime.now(timezone.utc)
-            - timedelta(days=days)
-            - timedelta(days=time_backward)
+        datetime.now(timezone.utc)
+        - timedelta(days=days)
+        - timedelta(days=time_backward)
     )
     end: datetime = (
-            datetime.now(timezone.utc) + timedelta(hours=2) - timedelta(days=time_backward)
+        datetime.now(timezone.utc) + timedelta(hours=2) - timedelta(days=time_backward)
     )
     ohlc_data: pd.DataFrame = pd.DataFrame(
         mt5.copy_rates_range(symbol, time_frame, start, end)
@@ -177,7 +177,7 @@ def create_history_charts(days: int, data: pd.DataFrame) -> None:
 
 # main program loop
 def run_calculations(
-        symbol: str, days: int, time_frm: str, forex: bool, time_backward: int
+    symbol: str, days: int, time_frm: str, forex: bool, time_backward: int
 ) -> Tuple[bool, Any]:
     """
     This function is responsible for call all important backend functions which makes calculations on data.

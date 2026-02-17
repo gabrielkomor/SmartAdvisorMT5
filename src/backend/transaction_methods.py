@@ -1,20 +1,25 @@
+"""
+This file contains functions responsible for opening and closing investment positions on the financial market.
+"""
+
 from typing import Tuple, Any
 
 import MetaTrader5 as mt5
 
 
-def log_in(login: int, password: str, server: str) -> bool:
-    mt5.initialize()
-    return mt5.login(login, password, server)
-
-
-def log_out() -> None:
-    mt5.shutdown()
-
-
 def open_position(
     action_type: str, symbol: str, volume: float, comment: str, sl: float, tp: float
 ) -> bool:
+    """
+    This function is responsible for opening transaction positions.
+    :param action_type: action type.
+    :param symbol: trading symbol.
+    :param volume: volume.
+    :param comment: transaction comment.
+    :param sl: stop loss.
+    :param tp: take profit.
+    :return: transaction success.
+    """
     request = None
 
     if action_type == "buy":
@@ -58,6 +63,13 @@ def open_position(
 
 
 def close_position(symbol: str, volume: float, comment: str) -> Tuple[bool, Any]:
+    """
+    This function is responsible for close trading positions.
+    :param symbol: trading symbol.
+    :param volume: volume.
+    :param comment: position comment.
+    :return: closed position.
+    """
     positions = mt5.positions_get(symbol=symbol)
 
     if positions is None:

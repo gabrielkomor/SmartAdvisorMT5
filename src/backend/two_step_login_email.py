@@ -1,3 +1,7 @@
+"""
+Functions in this file are responsible for working with OTP codes.
+"""
+
 import os
 from pathlib import Path
 from typing import Tuple, Any
@@ -12,6 +16,12 @@ load_dotenv(env_path)
 
 
 def send_otp_via_email(email: str, otp_code: str) -> None:
+    """
+    This function is responsible for sending emails contain one time passwords for registration.
+    :param email: user email.
+    :param otp_code: one time password.
+    :return: nothing, only sends emails.
+    """
     sender_email = os.getenv("GMAIL_EMAIL")
     sender_password = os.getenv("OTP_GMAIL_PASSWORD")
     subject = "Smart Advisor MT5 e-mail verification code"
@@ -28,11 +38,21 @@ def send_otp_via_email(email: str, otp_code: str) -> None:
 
 
 def generate_otp(secret: str) -> str:
+    """
+    This function is responsible for generating one time passwords.
+    :param secret: secret for password.
+    :return: one time password.
+    """
     totp = TOTP(secret)
     return totp.now()
 
 
 def two_step_login(user_email: str) -> Tuple[bool, Any]:
+    """
+    This function is responsible for generate otp and send it via email.
+    :param user_email: user email.
+    :return: success.
+    """
     try:
         secret = "JBSWY3DPEHPK3PXP"
         otp_code = generate_otp(secret)

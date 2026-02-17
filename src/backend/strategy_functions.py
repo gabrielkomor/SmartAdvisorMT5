@@ -8,11 +8,11 @@ import pandas as pd
 
 
 def calculate_signals_rsi(
-        rsi: float,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    rsi: float,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for rsi indicator using fuzzy logic.
@@ -63,12 +63,12 @@ def calculate_signals_rsi(
 
 
 def calculate_signals_sma(
-        sma_n: float,
-        sma_m: float,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    sma_n: float,
+    sma_m: float,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for sma indicator using fuzzy logic.
@@ -113,13 +113,13 @@ def calculate_signals_sma(
 
 
 def calculate_signals_bollinger_bands(
-        data: pd.DataFrame,
-        bb_up_line: float,
-        bb_down_line: float,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    data: pd.DataFrame,
+    bb_up_line: float,
+    bb_down_line: float,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for bb indicator using fuzzy logic.
@@ -167,11 +167,11 @@ def calculate_signals_bollinger_bands(
 
 
 def calculate_signals_macd(
-        hist: np.ndarray,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    hist: np.ndarray,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for macd indicator using fuzzy logic.
@@ -214,13 +214,13 @@ def calculate_signals_macd(
 
 
 def calculate_signals_adx(
-        adx: pd.Series,
-        pdm: pd.Series,
-        ndm: pd.Series,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    adx: pd.Series,
+    pdm: pd.Series,
+    ndm: pd.Series,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for adx indicator using fuzzy logic.
@@ -266,11 +266,11 @@ def calculate_signals_adx(
 
 
 def calculate_signals_volume(
-        data: pd.DataFrame,
-        num: int,
-        signals_buy: np.ndarray,
-        signals_sell: np.ndarray,
-        signals_hold: np.ndarray,
+    data: pd.DataFrame,
+    num: int,
+    signals_buy: np.ndarray,
+    signals_sell: np.ndarray,
+    signals_hold: np.ndarray,
 ) -> None:
     """
     This function calculate transaction signal for volume indicator using fuzzy logic.

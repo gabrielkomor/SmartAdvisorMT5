@@ -1,9 +1,20 @@
+"""
+This file contains functions that are used to calculate the values of technical indicators based on data from
+financial markets.
+"""
+
 from typing import Tuple
 
 import pandas as pd
 
 
 def calculate_sma(data: pd.DataFrame, period: int = 14) -> Tuple[float, float]:
+    """
+    This function is responsible for calculate sma based on financial data.
+    :param data: data.
+    :param period: sma period.
+    :return: sma data.
+    """
     closes = data["Close"]
     ma = closes.tail(period).mean()
     sma = closes.rolling(period).mean()
@@ -11,6 +22,12 @@ def calculate_sma(data: pd.DataFrame, period: int = 14) -> Tuple[float, float]:
 
 
 def calculate_rsi(data: pd.DataFrame, period: int = 14) -> float:
+    """
+    This function is responsible for calculate rsi based on financial data.
+    :param data: data.
+    :param period: rsi period.
+    :return: rsi data.
+    """
     delta = data["Close"].diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
@@ -22,6 +39,13 @@ def calculate_rsi(data: pd.DataFrame, period: int = 14) -> float:
 def calculate_bollinger_bands(
     data: pd.DataFrame, period: int = 20, multiplier: int = 2
 ) -> Tuple[float, float, float]:
+    """
+    This function is responsible for calculate bb based on financial data.
+    :param data: data.
+    :param period: bb period.
+    :param multiplier: number.
+    :return: bb data.
+    """
     ma = data["Close"].rolling(window=period).mean()
     std = data["Close"].rolling(window=period).std()
     upper_band = ma + (std * multiplier)
@@ -35,6 +59,14 @@ def calculate_macd(
     long_period: int = 26,
     signal_period: int = 9,
 ) -> tuple[float, float, float]:
+    """
+    This function is responsible for calculate macd based on financial data.
+    :param data: data.
+    :param short_period: short macd period.
+    :param long_period: long macd period.
+    :param signal_period: macd signal period.
+    :return: macd data.
+    """
     short_ema = data["Close"].ewm(span=short_period, adjust=False).mean()
     long_ema = data["Close"].ewm(span=long_period, adjust=False).mean()
     macd_line = short_ema - long_ema
@@ -44,6 +76,12 @@ def calculate_macd(
 
 
 def calculate_adx(data: pd.DataFrame, period: int = 14) -> Tuple[float, float, float]:
+    """
+    This function is responsible for calculate adx based on financial data.
+    :param data: financial data.
+    :param period: adx period.
+    :return: adx data.
+    """
     high = data["High"]
     low = data["Low"]
     close = data["Close"]
@@ -70,6 +108,11 @@ def calculate_adx(data: pd.DataFrame, period: int = 14) -> Tuple[float, float, f
 
 
 def calculate_fibonacci_levels(data: pd.DataFrame) -> Tuple[Tuple[float], Tuple[float]]:
+    """
+    This function is responsible for calculate fibonaci levels based on financial data.
+    :param data: financial data.
+    :return: fibo data.
+    """
     high_price = data["High"].max()
     low_price = data["Low"].min()
     levels = (0, 0.236, 0.382, 0.5, 0.618, 0.786, 1)
