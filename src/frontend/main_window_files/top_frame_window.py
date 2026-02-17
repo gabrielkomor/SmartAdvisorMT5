@@ -1,3 +1,7 @@
+"""
+This is an auxiliary file that stores a fragment of the graphical interface of the main application window.
+"""
+
 from PyQt6 import QtCore, QtWidgets, QtGui
 
 

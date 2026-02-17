@@ -1,8 +1,17 @@
+"""
+This is an auxiliary file that stores a fragment of the graphical interface of the main application window.
+"""
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class BigLeftFrameBuilder:
-    def __init__(self, central_widget):
+    """
+    This class is responsible for creating a wide navigation menu located on the left side of the main
+    application window.
+    """
+
+    def __init__(self, central_widget) -> None:
         self.central_widget = central_widget
         self.big_left_frame = None
         self.button_big_show_menu = None
@@ -17,7 +26,12 @@ class BigLeftFrameBuilder:
         self.vertical_layout_2 = None
         self.vertical_layout_5 = None
 
-    def big_left_frame_setup(self, icons):
+    def big_left_frame_setup(self, icons) -> None:
+        """
+        This method is responsible for create navigation menu content.
+        :param icons: menu icons.
+        :return: nothing.
+        """
         self.big_left_frame = QtWidgets.QFrame(parent=self.central_widget)
         self.big_left_frame.setMinimumSize(QtCore.QSize(160, 350))
         self.big_left_frame.setMaximumSize(QtCore.QSize(150, 16777215))
